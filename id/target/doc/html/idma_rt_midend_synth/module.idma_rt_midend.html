@@ -1,0 +1,91 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:46.439820017 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">idma_rt_midend</a></h1>
+<div class="docblock">
+<p>RT midend for the iDMA</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.NumEvents" class="impl"><code class="in-band"><a href="#parameter.NumEvents">NumEvents</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Number of parallel events</p>
+</div><h3 id="parameter.EventCntWidth" class="impl"><code class="in-band"><a href="#parameter.EventCntWidth">EventCntWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>The width of the event counters (count multiple of clock period)</p>
+</div><h3 id="parameter.NumOutstanding" class="impl"><code class="in-band"><a href="#parameter.NumOutstanding">NumOutstanding</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Number of outstanding DMA events</p>
+</div><h3 id="parameter.addr_t" class="impl"><code class="in-band"><a href="#parameter.addr_t">addr_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Address type</p>
+</div><h3 id="parameter.idma_nd_req_t" class="impl"><code class="in-band"><a href="#parameter.idma_nd_req_t">idma_nd_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>ND iDMA request type</p>
+</div><h3 id="parameter.idma_rsp_t" class="impl"><code class="in-band"><a href="#parameter.idma_rsp_t">idma_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>iDMA response type</p>
+</div><h3 id="parameter.event_cnt_t" class="impl"><code class="in-band"><a href="#parameter.event_cnt_t">event_cnt_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p><em>DO NOT OVERWRITE</em>: Derived event counter type.</p>
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Clock</p>
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Asynchronous reset, active low</p>
+</div><h3 id="port.event_counts_i" class="impl"><code class="in-band"><a href="#port.event_counts_i">event_counts_i</a><span class="type-annotation">: input  event_cnt_t [NumEvents-1:0]</span></code></h3><div class="docblock">
+<p>The threshold an event is triggered</p>
+</div><h3 id="port.src_addr_i" class="impl"><code class="in-band"><a href="#port.src_addr_i">src_addr_i</a><span class="type-annotation">: input  addr_t      [NumEvents-1:0]</span></code></h3><div class="docblock">
+<p>The source address of the event</p>
+</div><h3 id="port.dst_addr_i" class="impl"><code class="in-band"><a href="#port.dst_addr_i">dst_addr_i</a><span class="type-annotation">: input  addr_t      [NumEvents-1:0]</span></code></h3><div class="docblock">
+<p>The destination address of the event</p>
+</div><h3 id="port.length_i" class="impl"><code class="in-band"><a href="#port.length_i">length_i</a><span class="type-annotation">: input  addr_t      [NumEvents-1:0]</span></code></h3><div class="docblock">
+<p>The length of the event</p>
+</div><h3 id="port.src_1d_stride_i" class="impl"><code class="in-band"><a href="#port.src_1d_stride_i">src_1d_stride_i</a><span class="type-annotation">: input  addr_t      [NumEvents-1:0]</span></code></h3><div class="docblock">
+<p>The source stride of the event</p>
+</div><h3 id="port.dst_1d_stride_i" class="impl"><code class="in-band"><a href="#port.dst_1d_stride_i">dst_1d_stride_i</a><span class="type-annotation">: input  addr_t      [NumEvents-1:0]</span></code></h3><div class="docblock">
+<p>The destination stride of the event</p>
+</div><h3 id="port.num_1d_reps_i" class="impl"><code class="in-band"><a href="#port.num_1d_reps_i">num_1d_reps_i</a><span class="type-annotation">: input  addr_t      [NumEvents-1:0]</span></code></h3><div class="docblock">
+<p>The number of repetitions of the event</p>
+</div><h3 id="port.src_2d_stride_i" class="impl"><code class="in-band"><a href="#port.src_2d_stride_i">src_2d_stride_i</a><span class="type-annotation">: input  addr_t      [NumEvents-1:0]</span></code></h3><div class="docblock">
+<p>The source stride of the event</p>
+</div><h3 id="port.dst_2d_stride_i" class="impl"><code class="in-band"><a href="#port.dst_2d_stride_i">dst_2d_stride_i</a><span class="type-annotation">: input  addr_t      [NumEvents-1:0]</span></code></h3><div class="docblock">
+<p>The destination stride of the event</p>
+</div><h3 id="port.num_2d_reps_i" class="impl"><code class="in-band"><a href="#port.num_2d_reps_i">num_2d_reps_i</a><span class="type-annotation">: input  addr_t      [NumEvents-1:0]</span></code></h3><div class="docblock">
+<p>The number of repetitions of the event</p>
+</div><h3 id="port.event_ena_i" class="impl"><code class="in-band"><a href="#port.event_ena_i">event_ena_i</a><span class="type-annotation">: input  logic       [NumEvents-1:0]</span></code></h3><div class="docblock">
+<p>Enable the given event</p>
+</div><h3 id="port.event_counts_o" class="impl"><code class="in-band"><a href="#port.event_counts_o">event_counts_o</a><span class="type-annotation">: output event_cnt_t [NumEvents-1:0]</span></code></h3><div class="docblock">
+<p>Current state of the counters (debugging)</p>
+</div><h3 id="port.nd_req_o" class="impl"><code class="in-band"><a href="#port.nd_req_o">nd_req_o</a><span class="type-annotation">: output idma_nd_req_t</span></code></h3><div class="docblock">
+<p>ND iDMA request</p>
+</div><h3 id="port.nd_req_valid_o" class="impl"><code class="in-band"><a href="#port.nd_req_valid_o">nd_req_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>ND iDMA request valid</p>
+</div><h3 id="port.nd_req_ready_i" class="impl"><code class="in-band"><a href="#port.nd_req_ready_i">nd_req_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>ND iDMA request ready</p>
+</div><h3 id="port.burst_rsp_i" class="impl"><code class="in-band"><a href="#port.burst_rsp_i">burst_rsp_i</a><span class="type-annotation">: input  idma_rsp_t</span></code></h3><div class="docblock">
+<p>iDMA 1D response</p>
+</div><h3 id="port.burst_rsp_valid_i" class="impl"><code class="in-band"><a href="#port.burst_rsp_valid_i">burst_rsp_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>iDMA 1D response valid</p>
+</div><h3 id="port.burst_rsp_ready_o" class="impl"><code class="in-band"><a href="#port.burst_rsp_ready_o">burst_rsp_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>iDMA 1D response ready</p>
+</div><h3 id="port.nd_req_i" class="impl"><code class="in-band"><a href="#port.nd_req_i">nd_req_i</a><span class="type-annotation">: input  idma_nd_req_t</span></code></h3><div class="docblock">
+<p>Bypass: ND iDMA request</p>
+</div><h3 id="port.nd_req_valid_i" class="impl"><code class="in-band"><a href="#port.nd_req_valid_i">nd_req_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Bypass: ND iDMA request valid</p>
+</div><h3 id="port.nd_req_ready_o" class="impl"><code class="in-band"><a href="#port.nd_req_ready_o">nd_req_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Bypass: ND iDMA request ready</p>
+</div><h3 id="port.burst_rsp_o" class="impl"><code class="in-band"><a href="#port.burst_rsp_o">burst_rsp_o</a><span class="type-annotation">: output idma_rsp_t</span></code></h3><div class="docblock">
+<p>Bypass: iDMA 1D response</p>
+</div><h3 id="port.burst_rsp_valid_o" class="impl"><code class="in-band"><a href="#port.burst_rsp_valid_o">burst_rsp_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Bypass: iDMA 1D response valid</p>
+</div><h3 id="port.burst_rsp_ready_i" class="impl"><code class="in-band"><a href="#port.burst_rsp_ready_i">burst_rsp_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Bypass: iDMA 1D response ready</p>
+</div><h2 id="types" class="section-header"><a href="#types">Types<a></h2>
+<table>
+<tr><td><a class="type" href="type.ext_arb_t.html">ext_arb_t</a></td><td></td></tr></table>
+<h2 id="signals" class="section-header"><a href="#signals">Signals</a></h2>
+<h3 id="signal.ext_req" class="impl"><code class="in-band"><a href="#signal.ext_req">ext_req</a><span class="type-annotation">: ext_arb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.int_req" class="impl"><code class="in-band"><a href="#signal.int_req">int_req</a><span class="type-annotation">: ext_arb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.out_req" class="impl"><code class="in-band"><a href="#signal.out_req">out_req</a><span class="type-annotation">: ext_arb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.idma_nd_req_int" class="impl"><code class="in-band"><a href="#signal.idma_nd_req_int">idma_nd_req_int</a><span class="type-annotation">: idma_nd_req_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.int_rsp" class="impl"><code class="in-band"><a href="#signal.int_rsp">int_rsp</a><span class="type-annotation">: idma_rsp_t</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

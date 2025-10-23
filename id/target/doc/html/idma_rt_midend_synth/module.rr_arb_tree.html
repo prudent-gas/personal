@@ -1,0 +1,127 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:46.439203272 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">rr_arb_tree</a></h1>
+<div class="docblock">
+<p>The rr_arb_tree employs non-starving round robin-arbitration - i.e., the priorities</p>
+<p>rotate each cycle.</p>
+<h2>Fair vs. unfair Arbitration</h2>
+<p>This refers to fair throughput distribution when not all inputs have active requests.</p>
+<p>This module has an internal state <code>rr_q</code> which defines the highest priority input. (When</p>
+<p><code>ExtPrio</code> is <code>1'b1</code> this state is provided from the outside.) The arbitration tree will</p>
+<p>choose the input with the same index as currently defined by the state if it has an active</p>
+<p>request. Otherwise a <em>random</em> other active input is selected. The parameter <code>FairArb</code> is used</p>
+<p>to distinguish between two methods of calculating the next state.</p>
+<ul>
+<li>
+<p><code>1'b0</code>: The next state is calculated by advancing the current state by one. This leads to the</p>
+<pre><code>    state being calculated without the context of the active request. Leading to an
+
+    unfair throughput distribution if not all inputs have active requests.
+</code></pre>
+</li>
+<li>
+<p><code>1'b1</code>: The next state jumps to the next unserved request with higher index.</p>
+<pre><code>    This is achieved by using two trailing-zero-counters (`lzc`). The upper has the masked
+
+    `req_i` signal with all indices which will have a higher priority in the next state.
+
+    The trailing zero count defines the input index with the next highest priority after
+
+    the current one is served. When the upper is empty the lower `lzc` provides the
+
+    wrapped index if there are outstanding requests with lower or same priority.
+</code></pre>
+</li>
+</ul>
+<p>The implication of throughput fairness on the module timing are:</p>
+<ul>
+<li>
+<p>The trailing zero counter (<code>lzc</code>) has a loglog relation of input to output timing. This means</p>
+<p>that in this module the input to register path scales with Log(Log(<code>NumIn</code>)).</p>
+</li>
+<li>
+<p>The <code>rr_arb_tree</code> data multiplexing scales with Log(<code>NumIn</code>). This means that the input to output</p>
+<p>timing path of this module also scales scales with Log(<code>NumIn</code>).</p>
+</li>
+</ul>
+<p>This implies that in this module the input to output path is always longer than the input to</p>
+<p>register path. As the output data usually also terminates in a register the parameter <code>FairArb</code></p>
+<p>only has implications on the area. When it is <code>1'b0</code> a static plus one adder is instantiated.</p>
+<p>If it is <code>1'b1</code> two <code>lzc</code>, a masking logic stage and a two input multiplexer are instantiated.</p>
+<p>However these are small in respect of the data multiplexers needed, as the width of the <code>req_i</code></p>
+<p>signal is usually less as than <code>DataWidth</code>.</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.NumIn" class="impl"><code class="in-band"><a href="#parameter.NumIn">NumIn</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Number of inputs to be arbitrated.</p>
+</div><h3 id="parameter.DataWidth" class="impl"><code class="in-band"><a href="#parameter.DataWidth">DataWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Data width of the payload in bits. Not needed if <code>DataType</code> is overwritten.</p>
+</div><h3 id="parameter.DataType" class="impl"><code class="in-band"><a href="#parameter.DataType">DataType</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Data type of the payload, can be overwritten with custom type. Only use of <code>DataWidth</code>.</p>
+</div><h3 id="parameter.ExtPrio" class="impl"><code class="in-band"><a href="#parameter.ExtPrio">ExtPrio</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>The <code>ExtPrio</code> option allows to override the internal round robin counter via the</p>
+<p><code>rr_i</code> signal. This can be useful in case multiple arbiters need to have</p>
+<p>rotating priorities that are operating in lock-step. If static priority arbitration</p>
+<p>is needed, just connect <code>rr_i</code> to ’0.</p>
+<p>Set to 1’b1 to enable.</p>
+</div><h3 id="parameter.AxiVldRdy" class="impl"><code class="in-band"><a href="#parameter.AxiVldRdy">AxiVldRdy</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>If <code>AxiVldRdy</code> is set, the req/gnt signals are compliant with the AXI style vld/rdy</p>
+<p>handshake. Namely, upstream vld (req) must not depend on rdy (gnt), as it can be deasserted</p>
+<p>again even though vld is asserted. Enabling <code>AxiVldRdy</code> leads to a reduction of arbiter</p>
+<p>delay and area.</p>
+<p>Set to <code>1'b1</code> to treat req/gnt as vld/rdy.</p>
+</div><h3 id="parameter.LockIn" class="impl"><code class="in-band"><a href="#parameter.LockIn">LockIn</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>The <code>LockIn</code> option prevents the arbiter from changing the arbitration</p>
+<p>decision when the arbiter is disabled. I.e., the index of the first request</p>
+<p>that wins the arbitration will be locked in case the destination is not</p>
+<p>able to grant the request in the same cycle.</p>
+<p>Set to <code>1'b1</code> to enable.</p>
+</div><h3 id="parameter.FairArb" class="impl"><code class="in-band"><a href="#parameter.FairArb">FairArb</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>When set, ensures that throughput gets distributed evenly between all inputs.</p>
+<p>Set to <code>1'b0</code> to disable.</p>
+</div><h3 id="parameter.IdxWidth" class="impl"><code class="in-band"><a href="#parameter.IdxWidth">IdxWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Dependent parameter, do <strong>not</strong> overwrite.</p>
+<p>Width of the arbitration priority signal and the arbitrated index.</p>
+</div><h3 id="parameter.idx_t" class="impl"><code class="in-band"><a href="#parameter.idx_t">idx_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Dependent parameter, do <strong>not</strong> overwrite.</p>
+<p>Type for defining the arbitration priority and arbitrated index signal.</p>
+</div><h3 id="parameter.NumLevels" class="impl"><code class="in-band"><a href="#parameter.NumLevels">NumLevels</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h3 id="parameter.Idx0" class="impl"><code class="in-band"><a href="#parameter.Idx0">Idx0</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h3 id="parameter.Idx1" class="impl"><code class="in-band"><a href="#parameter.Idx1">Idx1</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Clock, positive edge triggered.</p>
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Asynchronous reset, active low.</p>
+</div><h3 id="port.flush_i" class="impl"><code class="in-band"><a href="#port.flush_i">flush_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Clears the arbiter state. Only used if <code>ExtPrio</code> is <code>1'b0</code> or <code>LockIn</code> is <code>1'b1</code>.</p>
+</div><h3 id="port.rr_i" class="impl"><code class="in-band"><a href="#port.rr_i">rr_i</a><span class="type-annotation">: input  idx_t</span></code></h3><div class="docblock">
+<p>External round-robin priority. Only used if <code>ExtPrio</code> is <code>1'b1.</code></p>
+</div><h3 id="port.req_i" class="impl"><code class="in-band"><a href="#port.req_i">req_i</a><span class="type-annotation">: input  logic    [NumIn-1:0]</span></code></h3><div class="docblock">
+<p>Input requests arbitration.</p>
+</div><h3 id="port.gnt_o" class="impl"><code class="in-band"><a href="#port.gnt_o">gnt_o</a><span class="type-annotation">: output logic    [NumIn-1:0]</span></code></h3><div class="docblock">
+<p>Input request is granted.</p>
+</div><h3 id="port.data_i" class="impl"><code class="in-band"><a href="#port.data_i">data_i</a><span class="type-annotation">: input  DataType [NumIn-1:0]</span></code></h3><div class="docblock">
+<p>Input data for arbitration.</p>
+</div><h3 id="port.req_o" class="impl"><code class="in-band"><a href="#port.req_o">req_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Output request is valid.</p>
+</div><h3 id="port.gnt_i" class="impl"><code class="in-band"><a href="#port.gnt_i">gnt_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Output request is granted.</p>
+</div><h3 id="port.data_o" class="impl"><code class="in-band"><a href="#port.data_o">data_o</a><span class="type-annotation">: output DataType</span></code></h3><div class="docblock">
+<p>Output data.</p>
+</div><h3 id="port.idx_o" class="impl"><code class="in-band"><a href="#port.idx_o">idx_o</a><span class="type-annotation">: output idx_t</span></code></h3><div class="docblock">
+<p>Index from which input the data came from.</p>
+</div><h2 id="signals" class="section-header"><a href="#signals">Signals</a></h2>
+<h3 id="signal.rr_q" class="impl"><code class="in-band"><a href="#signal.rr_q">rr_q</a><span class="type-annotation">: idx_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.rr_d" class="impl"><code class="in-band"><a href="#signal.rr_d">rr_d</a><span class="type-annotation">: idx_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.upper_idx" class="impl"><code class="in-band"><a href="#signal.upper_idx">upper_idx</a><span class="type-annotation">: idx_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.lower_idx" class="impl"><code class="in-band"><a href="#signal.lower_idx">lower_idx</a><span class="type-annotation">: idx_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.next_idx" class="impl"><code class="in-band"><a href="#signal.next_idx">next_idx</a><span class="type-annotation">: idx_t</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

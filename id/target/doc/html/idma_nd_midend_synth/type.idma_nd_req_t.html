@@ -1,0 +1,18 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:21.801744209 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Typedef <a class="type">idma_nd_req_t</a></h1>
+<pre>typedef struct packed {                                              
+        idma_req_t                burst_req;                             
+        idma_d_req_t [NumDim-2:0] d_req;                                 
+    } idma_nd_req_t;</pre>
+<p>ND iDMA request type. Union of a 1D iDMA request (innermost dimension) and the configuration</p>
+<p>of each additional dimension. To pass a 1D transfer just set the lowest number of</p>
+<p>repetitions to one keeping the rest to 0.</p>
+</section>
+</body>
+</html>

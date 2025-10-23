@@ -1,0 +1,103 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:34.648108914 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">idma_desc64_top</a></h1>
+<div class="docblock">
+<p>This module serves as a descriptor-based frontend for the iDMA in the CVA6-core</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.AddrWidth" class="impl"><code class="in-band"><a href="#parameter.AddrWidth">AddrWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Width of the addresses</p>
+</div><h3 id="parameter.DataWidth" class="impl"><code class="in-band"><a href="#parameter.DataWidth">DataWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Width of a data item on the AXI bus</p>
+</div><h3 id="parameter.AxiIdWidth" class="impl"><code class="in-band"><a href="#parameter.AxiIdWidth">AxiIdWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Width an AXI ID</p>
+</div><h3 id="parameter.idma_req_t" class="impl"><code class="in-band"><a href="#parameter.idma_req_t">idma_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>burst request type. See the documentation of the idma backend for details</p>
+</div><h3 id="parameter.idma_rsp_t" class="impl"><code class="in-band"><a href="#parameter.idma_rsp_t">idma_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>burst response type. See the documentation of the idma backend for details</p>
+</div><h3 id="parameter.reg_rsp_t" class="impl"><code class="in-band"><a href="#parameter.reg_rsp_t">reg_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>regbus interface types. Use the REG_BUS_TYPEDEF macros to define the types</p>
+<p>or see the idma backend documentation for more details</p>
+</div><h3 id="parameter.reg_req_t" class="impl"><code class="in-band"><a href="#parameter.reg_req_t">reg_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.axi_rsp_t" class="impl"><code class="in-band"><a href="#parameter.axi_rsp_t">axi_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>AXI interface types used for fetching descriptors.</p>
+<p>Use the AXI_TYPEDEF_ALL macros to define the types</p>
+</div><h3 id="parameter.axi_req_t" class="impl"><code class="in-band"><a href="#parameter.axi_req_t">axi_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.axi_ar_chan_t" class="impl"><code class="in-band"><a href="#parameter.axi_ar_chan_t">axi_ar_chan_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.axi_r_chan_t" class="impl"><code class="in-band"><a href="#parameter.axi_r_chan_t">axi_r_chan_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.InputFifoDepth" class="impl"><code class="in-band"><a href="#parameter.InputFifoDepth">InputFifoDepth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Specifies the depth of the fifo behind the descriptor address register</p>
+</div><h3 id="parameter.PendingFifoDepth" class="impl"><code class="in-band"><a href="#parameter.PendingFifoDepth">PendingFifoDepth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Specifies the buffer size of the fifo that tracks requests submitted to the backend</p>
+</div><h3 id="parameter.BackendDepth" class="impl"><code class="in-band"><a href="#parameter.BackendDepth">BackendDepth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>How many requests the backend might have at the same time in its buffers.</p>
+<p>Usually, <code>NumAxInFlight + BufferDepth</code></p>
+</div><h3 id="parameter.NSpeculation" class="impl"><code class="in-band"><a href="#parameter.NSpeculation">NSpeculation</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Specifies how many descriptors may be fetched speculatively</p>
+</div><h3 id="parameter.MaxAWWPending" class="impl"><code class="in-band"><a href="#parameter.MaxAWWPending">MaxAWWPending</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Specifies how many unsent AWs/Ws are allowed</p>
+</div><h3 id="parameter.PendingFifoDepthBits" class="impl"><code class="in-band"><a href="#parameter.PendingFifoDepthBits">PendingFifoDepthBits</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>clock</p>
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>reset</p>
+</div><h3 id="port.master_req_o" class="impl"><code class="in-band"><a href="#port.master_req_o">master_req_o</a><span class="type-annotation">: output axi_req_t</span></code></h3><div class="docblock">
+<p>axi interface used for fetching descriptors</p>
+<p>master pair</p>
+<p>master request</p>
+</div><h3 id="port.master_rsp_i" class="impl"><code class="in-band"><a href="#port.master_rsp_i">master_rsp_i</a><span class="type-annotation">: input  axi_rsp_t</span></code></h3><div class="docblock">
+<p>master response</p>
+</div><h3 id="port.axi_ar_id_i" class="impl"><code class="in-band"><a href="#port.axi_ar_id_i">axi_ar_id_i</a><span class="type-annotation">: input  logic [AxiIdWidth-1:0]</span></code></h3><div class="docblock">
+<p>ID to be used by the read channel</p>
+</div><h3 id="port.axi_aw_id_i" class="impl"><code class="in-band"><a href="#port.axi_aw_id_i">axi_aw_id_i</a><span class="type-annotation">: input  logic [AxiIdWidth-1:0]</span></code></h3><div class="docblock">
+<p>ID to be used by the write channel</p>
+</div><h3 id="port.slave_req_i" class="impl"><code class="in-band"><a href="#port.slave_req_i">slave_req_i</a><span class="type-annotation">: input  reg_req_t</span></code></h3><div class="docblock">
+<p>regbus interface</p>
+<p>slave pair</p>
+<p>The slave interface exposes two registers: One address register to</p>
+<p>write a descriptor address to process and a status register that</p>
+<p>exposes whether the DMA is busy on bit 0 and whether FIFOs are full</p>
+<p>on bit 1.</p>
+<p>master request</p>
+</div><h3 id="port.slave_rsp_o" class="impl"><code class="in-band"><a href="#port.slave_rsp_o">slave_rsp_o</a><span class="type-annotation">: output reg_rsp_t</span></code></h3><div class="docblock">
+<p>master response</p>
+</div><h3 id="port.idma_req_o" class="impl"><code class="in-band"><a href="#port.idma_req_o">idma_req_o</a><span class="type-annotation">: output idma_req_t</span></code></h3><div class="docblock">
+<p>backend interface</p>
+<p>burst request submission</p>
+<p>burst request data. See iDMA backend documentation for fields</p>
+</div><h3 id="port.idma_req_valid_o" class="impl"><code class="in-band"><a href="#port.idma_req_valid_o">idma_req_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>valid signal for the backend data submission</p>
+</div><h3 id="port.idma_req_ready_i" class="impl"><code class="in-band"><a href="#port.idma_req_ready_i">idma_req_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>ready signal for the backend data submission</p>
+</div><h3 id="port.idma_rsp_i" class="impl"><code class="in-band"><a href="#port.idma_rsp_i">idma_rsp_i</a><span class="type-annotation">: input  idma_rsp_t</span></code></h3><div class="docblock">
+<p>status information from the backend</p>
+</div><h3 id="port.idma_rsp_valid_i" class="impl"><code class="in-band"><a href="#port.idma_rsp_valid_i">idma_rsp_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>valid signal for the backend response</p>
+</div><h3 id="port.idma_rsp_ready_o" class="impl"><code class="in-band"><a href="#port.idma_rsp_ready_o">idma_rsp_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>ready signal for the backend response</p>
+</div><h3 id="port.idma_busy_i" class="impl"><code class="in-band"><a href="#port.idma_busy_i">idma_busy_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>whether the backend is currently busy</p>
+</div><h3 id="port.irq_o" class="impl"><code class="in-band"><a href="#port.irq_o">irq_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Event: irq</p>
+</div><h2 id="types" class="section-header"><a href="#types">Types<a></h2>
+<table>
+<tr><td><a class="type" href="type.addr_t.html">addr_t</a></td><td></td></tr><tr><td><a class="type" href="type.descriptor_t.html">descriptor_t</a></td><td><p>Descriptor layout</p>
+</td></tr><tr><td><a class="type" href="type.flush_t.html">flush_t</a></td><td></td></tr></table>
+<h2 id="signals" class="section-header"><a href="#signals">Signals</a></h2>
+<h3 id="signal.idma_req" class="impl"><code class="in-band"><a href="#signal.idma_req">idma_req</a><span class="type-annotation">: idma_req_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.queued_addr" class="impl"><code class="in-band"><a href="#signal.queued_addr">queued_addr</a><span class="type-annotation">: addr_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.next_addr_from_desc" class="impl"><code class="in-band"><a href="#signal.next_addr_from_desc">next_addr_from_desc</a><span class="type-annotation">: addr_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.feedback_addr" class="impl"><code class="in-band"><a href="#signal.feedback_addr">feedback_addr</a><span class="type-annotation">: addr_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.next_wb_addr" class="impl"><code class="in-band"><a href="#signal.next_wb_addr">next_wb_addr</a><span class="type-annotation">: addr_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.input_addr" class="impl"><code class="in-band"><a href="#signal.input_addr">input_addr</a><span class="type-annotation">: addr_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.aw_addr" class="impl"><code class="in-band"><a href="#signal.aw_addr">aw_addr</a><span class="type-annotation">: addr_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.n_requests_to_flush" class="impl"><code class="in-band"><a href="#signal.n_requests_to_flush">n_requests_to_flush</a><span class="type-annotation">: flush_t</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

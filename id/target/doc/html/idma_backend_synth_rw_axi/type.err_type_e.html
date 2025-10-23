@@ -1,0 +1,34 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:02:30.958357918 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Typedef <a class="type">err_type_e</a></h1>
+<pre>typedef enum logic [1:0] {
+        BUS_READ,
+        BUS_WRITE,
+        BACKEND,
+        ND_MIDEND
+    } err_type_e;</pre>
+<p>Error Type</p>
+<ul>
+<li>
+<p><code>BUS_READ</code>: Error happened during a manager bus read</p>
+</li>
+<li>
+<p><code>BUS_WRITE</code>: Error happened during a manager bus write</p>
+</li>
+<li>
+<p><code>BACKEND</code>: Internal error to the backend; currently only transfer length == 0</p>
+</li>
+<li>
+<p><code>ND_MIDEND</code>: Internal error to the nd-midend; currently all number of repetitions are</p>
+<pre><code>         zero
+</code></pre>
+</li>
+</ul>
+</section>
+</body>
+</html>

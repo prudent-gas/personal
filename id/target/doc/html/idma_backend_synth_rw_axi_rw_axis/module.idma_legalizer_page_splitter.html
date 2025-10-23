@@ -1,0 +1,34 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:02:53.056749084 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">idma_legalizer_page_splitter</a></h1>
+<div class="docblock">
+<p>Legalizer module implementing a page splitter</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.OffsetWidth" class="impl"><code class="in-band"><a href="#parameter.OffsetWidth">OffsetWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h3 id="parameter.PageAddrWidth" class="impl"><code class="in-band"><a href="#parameter.PageAddrWidth">PageAddrWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h3 id="parameter.addr_t" class="impl"><code class="in-band"><a href="#parameter.addr_t">addr_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.page_len_t" class="impl"><code class="in-band"><a href="#parameter.page_len_t">page_len_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.page_addr_t" class="impl"><code class="in-band"><a href="#parameter.page_addr_t">page_addr_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.addr_i" class="impl"><code class="in-band"><a href="#port.addr_i">addr_i</a><span class="type-annotation">: input addr_t</span></code></h3><div class="docblock">
+<p>current address</p>
+</div><h3 id="port.not_bursting_i" class="impl"><code class="in-band"><a href="#port.not_bursting_i">not_bursting_i</a><span class="type-annotation">: input logic</span></code></h3><div class="docblock">
+<p>Burst enabled?</p>
+</div><h3 id="port.reduce_len_i" class="impl"><code class="in-band"><a href="#port.reduce_len_i">reduce_len_i</a><span class="type-annotation">: input logic</span></code></h3><div class="docblock">
+<p>User-given constraints enabled ?</p>
+</div><h3 id="port.max_llen_i" class="impl"><code class="in-band"><a href="#port.max_llen_i">max_llen_i</a><span class="type-annotation">: input logic [2:0]</span></code></h3><div class="docblock">
+<p>User-given constraints</p>
+</div><h3 id="port.num_bytes_to_pb_o" class="impl"><code class="in-band"><a href="#port.num_bytes_to_pb_o">num_bytes_to_pb_o</a><span class="type-annotation">: output page_len_t</span></code></h3><div class="docblock">
+<p>number of bytes to end of page</p>
+</div><h2 id="signals" class="section-header"><a href="#signals">Signals</a></h2>
+<h3 id="signal.page_size" class="impl"><code class="in-band"><a href="#signal.page_size">page_size</a><span class="type-annotation">: page_len_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.page_offset" class="impl"><code class="in-band"><a href="#signal.page_offset">page_offset</a><span class="type-annotation">: page_addr_t</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

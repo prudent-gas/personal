@@ -1,0 +1,52 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:02:45.57835974 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">idma_reg64_2d</a></h1>
+<div class="docblock">
+<p>Description: Register-based front-end for iDMA</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.NumRegs" class="impl"><code class="in-band"><a href="#parameter.NumRegs">NumRegs</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Number of configuration register ports</p>
+</div><h3 id="parameter.NumStreams" class="impl"><code class="in-band"><a href="#parameter.NumStreams">NumStreams</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Number of streams (max 16)</p>
+</div><h3 id="parameter.IdCounterWidth" class="impl"><code class="in-band"><a href="#parameter.IdCounterWidth">IdCounterWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Width of the transfer id (max 32-bit)</p>
+</div><h3 id="parameter.StreamWidth" class="impl"><code class="in-band"><a href="#parameter.StreamWidth">StreamWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Dependent parameter: Stream Idx</p>
+</div><h3 id="parameter.reg_req_t" class="impl"><code class="in-band"><a href="#parameter.reg_req_t">reg_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Register_interface request type</p>
+</div><h3 id="parameter.reg_rsp_t" class="impl"><code class="in-band"><a href="#parameter.reg_rsp_t">reg_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Register_interface response type</p>
+</div><h3 id="parameter.dma_req_t" class="impl"><code class="in-band"><a href="#parameter.dma_req_t">dma_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>DMA 1d or ND burst request type</p>
+</div><h3 id="parameter.cnt_width_t" class="impl"><code class="in-band"><a href="#parameter.cnt_width_t">cnt_width_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Dependent type for IdCounterWidth</p>
+</div><h3 id="parameter.stream_t" class="impl"><code class="in-band"><a href="#parameter.stream_t">stream_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Dependent type for StreamWidth</p>
+</div><h3 id="parameter.MaxNumStreams" class="impl"><code class="in-band"><a href="#parameter.MaxNumStreams">MaxNumStreams</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Maximum number of streams is set to 16. It can be enlarged, but the register file</p>
+<p>needs to be adapted too.</p>
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.dma_ctrl_req_i" class="impl"><code class="in-band"><a href="#port.dma_ctrl_req_i">dma_ctrl_req_i</a><span class="type-annotation">: input  reg_req_t [NumRegs-1:0]</span></code></h3><div class="docblock">
+<p>Register interface control slave</p>
+</div><h3 id="port.dma_ctrl_rsp_o" class="impl"><code class="in-band"><a href="#port.dma_ctrl_rsp_o">dma_ctrl_rsp_o</a><span class="type-annotation">: output reg_rsp_t [NumRegs-1:0]</span></code></h3><div class="docblock">
+</div><h3 id="port.dma_req_o" class="impl"><code class="in-band"><a href="#port.dma_req_o">dma_req_o</a><span class="type-annotation">: output dma_req_t</span></code></h3><div class="docblock">
+<p>Request signals</p>
+</div><h3 id="port.req_valid_o" class="impl"><code class="in-band"><a href="#port.req_valid_o">req_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.req_ready_i" class="impl"><code class="in-band"><a href="#port.req_ready_i">req_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.next_id_i" class="impl"><code class="in-band"><a href="#port.next_id_i">next_id_i</a><span class="type-annotation">: input  cnt_width_t</span></code></h3><div class="docblock">
+</div><h3 id="port.stream_idx_o" class="impl"><code class="in-band"><a href="#port.stream_idx_o">stream_idx_o</a><span class="type-annotation">: output stream_t</span></code></h3><div class="docblock">
+</div><h3 id="port.done_id_i" class="impl"><code class="in-band"><a href="#port.done_id_i">done_id_i</a><span class="type-annotation">: input  cnt_width_t           [NumStreams-1:0]</span></code></h3><div class="docblock">
+<p>Status signals</p>
+</div><h3 id="port.busy_i" class="impl"><code class="in-band"><a href="#port.busy_i">busy_i</a><span class="type-annotation">: input  idma_pkg::idma_busy_t [NumStreams-1:0]</span></code></h3><div class="docblock">
+</div><h3 id="port.midend_busy_i" class="impl"><code class="in-band"><a href="#port.midend_busy_i">midend_busy_i</a><span class="type-annotation">: input  logic                 [NumStreams-1:0]</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

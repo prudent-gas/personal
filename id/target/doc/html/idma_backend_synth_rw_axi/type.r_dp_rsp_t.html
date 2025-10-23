@@ -1,0 +1,28 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:02:30.977719164 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Typedef <a class="type">r_dp_rsp_t</a></h1>
+<pre>typedef struct packed {
+        axi_pkg::resp_t resp;
+        logic           last;
+        logic           first;
+    } r_dp_rsp_t;</pre>
+<p>The datapath read response type provides feedback from the read part of the datapath:</p>
+<ul>
+<li>
+<p><code>resp</code>: The response from the R channel of the AXI4 manager interface</p>
+</li>
+<li>
+<p><code>last</code>: The last flag from the R channel of the AXI4 manager interface</p>
+</li>
+<li>
+<p><code>first</code>: Is the current item first beat in the burst</p>
+</li>
+</ul>
+</section>
+</body>
+</html>

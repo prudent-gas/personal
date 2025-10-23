@@ -1,0 +1,34 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:58.325916376 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Typedef <a class="type">backend_options_t</a></h1>
+<pre>typedef struct packed {
+        logic       decouple_aw;
+        logic       decouple_rw;
+        logic [2:0] src_max_llen;
+        logic [2:0] dst_max_llen;
+        logic       src_reduce_len;
+        logic       dst_reduce_len;
+    } backend_options_t;</pre>
+<p>Backend option type:</p>
+<ul>
+<li>
+<p><code>decouple_aw</code>: <code>AWs</code> will only be sent after the first corresponding <code>R</code> is received</p>
+</li>
+<li>
+<p><code>decouple_rw</code>: decouples the <code>R</code> and <code>W</code> channels completely: can cause deadlocks</p>
+</li>
+<li>
+<p><code>*_max_llen</code>: the maximum log length of a burst</p>
+</li>
+<li>
+<p><code>*_reduce_len</code>: should bursts be reduced in length?</p>
+</li>
+</ul>
+</section>
+</body>
+</html>

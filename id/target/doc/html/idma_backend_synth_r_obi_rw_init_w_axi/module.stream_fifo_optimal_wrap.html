@@ -1,0 +1,37 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:00.858401732 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">stream_fifo_optimal_wrap</a></h1>
+<div class="docblock">
+<p>Optimal implementation of a stream FIFO based on the common cells modules.</p>
+<p>Selects the smaller and faster spill register if the depth is 2 and the FIFO if</p>
+<p>the depth is &gt;2. Throws an error for the meaningless configurations depth 0 and 1.</p>
+<p>AXI Package</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.Depth" class="impl"><code class="in-band"><a href="#parameter.Depth">Depth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Depth can be arbitrary from 2 to 2**32</p>
+</div><h3 id="parameter.type_t" class="impl"><code class="in-band"><a href="#parameter.type_t">type_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Type of the FIFO</p>
+</div><h3 id="parameter.PrintInfo" class="impl"><code class="in-band"><a href="#parameter.PrintInfo">PrintInfo</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Print information when the simulation launches</p>
+</div><h3 id="parameter.AddrDepth" class="impl"><code class="in-band"><a href="#parameter.AddrDepth">AddrDepth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.flush_i" class="impl"><code class="in-band"><a href="#port.flush_i">flush_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.testmode_i" class="impl"><code class="in-band"><a href="#port.testmode_i">testmode_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.usage_o" class="impl"><code class="in-band"><a href="#port.usage_o">usage_o</a><span class="type-annotation">: output logic [AddrDepth-1:0]</span></code></h3><div class="docblock">
+</div><h3 id="port.data_i" class="impl"><code class="in-band"><a href="#port.data_i">data_i</a><span class="type-annotation">: input  type_t</span></code></h3><div class="docblock">
+</div><h3 id="port.valid_i" class="impl"><code class="in-band"><a href="#port.valid_i">valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.ready_o" class="impl"><code class="in-band"><a href="#port.ready_o">ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.data_o" class="impl"><code class="in-band"><a href="#port.data_o">data_o</a><span class="type-annotation">: output type_t</span></code></h3><div class="docblock">
+</div><h3 id="port.valid_o" class="impl"><code class="in-band"><a href="#port.valid_o">valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.ready_i" class="impl"><code class="in-band"><a href="#port.ready_i">ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:34.647432247 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">idma_desc64_ar_gen</a></h1>
+<div class="docblock">
+<p>This module generates AR packets to fetch descriptors from memory</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.DataWidth" class="impl"><code class="in-band"><a href="#parameter.DataWidth">DataWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>AXI Data width</p>
+</div><h3 id="parameter.descriptor_t" class="impl"><code class="in-band"><a href="#parameter.descriptor_t">descriptor_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Descriptor type. <code>$bits(descriptor_t)</code> must be a power of two</p>
+</div><h3 id="parameter.axi_ar_chan_t" class="impl"><code class="in-band"><a href="#parameter.axi_ar_chan_t">axi_ar_chan_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>AXI AR channel type</p>
+</div><h3 id="parameter.axi_id_t" class="impl"><code class="in-band"><a href="#parameter.axi_id_t">axi_id_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>AXI AR id type</p>
+</div><h3 id="parameter.usage_t" class="impl"><code class="in-band"><a href="#parameter.usage_t">usage_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Type that can hold the usage information of the idma_req fifo</p>
+</div><h3 id="parameter.addr_t" class="impl"><code class="in-band"><a href="#parameter.addr_t">addr_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>AXI Address type</p>
+</div><h3 id="parameter.DataWidthBytes" class="impl"><code class="in-band"><a href="#parameter.DataWidthBytes">DataWidthBytes</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h3 id="parameter.DescriptorSize" class="impl"><code class="in-band"><a href="#parameter.DescriptorSize">DescriptorSize</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h3 id="parameter.AxiSize" class="impl"><code class="in-band"><a href="#parameter.AxiSize">AxiSize</a><span class="type-annotation">: logic [2:0]</span></code></h3><div class="docblock">
+</div><h3 id="parameter.AxiLength" class="impl"><code class="in-band"><a href="#parameter.AxiLength">AxiLength</a><span class="type-annotation">: logic [7:0]</span></code></h3><div class="docblock">
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Clock</p>
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Reset</p>
+</div><h3 id="port.axi_ar_chan_o" class="impl"><code class="in-band"><a href="#port.axi_ar_chan_o">axi_ar_chan_o</a><span class="type-annotation">: output axi_ar_chan_t</span></code></h3><div class="docblock">
+<p>AXI AR channel</p>
+</div><h3 id="port.axi_ar_chan_valid_o" class="impl"><code class="in-band"><a href="#port.axi_ar_chan_valid_o">axi_ar_chan_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>AXI AR valid</p>
+</div><h3 id="port.axi_ar_chan_ready_i" class="impl"><code class="in-band"><a href="#port.axi_ar_chan_ready_i">axi_ar_chan_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>AXI AR ready</p>
+</div><h3 id="port.axi_ar_id_i" class="impl"><code class="in-band"><a href="#port.axi_ar_id_i">axi_ar_id_i</a><span class="type-annotation">: input  axi_id_t</span></code></h3><div class="docblock">
+<p>AXI ID to use when requesting</p>
+</div><h3 id="port.queued_address_i" class="impl"><code class="in-band"><a href="#port.queued_address_i">queued_address_i</a><span class="type-annotation">: input  addr_t</span></code></h3><div class="docblock">
+<p>queued address to use when we reach the last in a chain</p>
+</div><h3 id="port.queued_address_valid_i" class="impl"><code class="in-band"><a href="#port.queued_address_valid_i">queued_address_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>queued address valid</p>
+</div><h3 id="port.queued_address_ready_o" class="impl"><code class="in-band"><a href="#port.queued_address_ready_o">queued_address_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>queued address ready</p>
+</div><h3 id="port.next_address_from_descriptor_i" class="impl"><code class="in-band"><a href="#port.next_address_from_descriptor_i">next_address_from_descriptor_i</a><span class="type-annotation">: input  addr_t</span></code></h3><div class="docblock">
+<p>next address as read from descriptor</p>
+</div><h3 id="port.next_address_from_descriptor_valid_i" class="impl"><code class="in-band"><a href="#port.next_address_from_descriptor_valid_i">next_address_from_descriptor_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>next address valid</p>
+</div><h3 id="port.idma_req_available_slots_i" class="impl"><code class="in-band"><a href="#port.idma_req_available_slots_i">idma_req_available_slots_i</a><span class="type-annotation">: input  usage_t</span></code></h3><div class="docblock">
+<p>number of available slots in the idma request fifo</p>
+</div><h3 id="port.feedback_addr_o" class="impl"><code class="in-band"><a href="#port.feedback_addr_o">feedback_addr_o</a><span class="type-annotation">: output addr_t</span></code></h3><div class="docblock">
+<p>address for feedback for the next request</p>
+</div><h3 id="port.feedback_addr_valid_o" class="impl"><code class="in-band"><a href="#port.feedback_addr_valid_o">feedback_addr_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>feedback address valid</p>
+</div><h3 id="port.busy_o" class="impl"><code class="in-band"><a href="#port.busy_o">busy_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>whether the unit is busy</p>
+</div><h2 id="signals" class="section-header"><a href="#signals">Signals</a></h2>
+<h3 id="signal.next_addr_q" class="impl"><code class="in-band"><a href="#signal.next_addr_q">next_addr_q</a><span class="type-annotation">: addr_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.next_addr_d" class="impl"><code class="in-band"><a href="#signal.next_addr_d">next_addr_d</a><span class="type-annotation">: addr_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.ar_addr" class="impl"><code class="in-band"><a href="#signal.ar_addr">ar_addr</a><span class="type-annotation">: addr_t</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

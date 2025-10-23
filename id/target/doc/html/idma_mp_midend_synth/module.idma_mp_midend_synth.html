@@ -1,0 +1,67 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:58.326778115 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">idma_mp_midend_synth</a></h1>
+<div class="docblock">
+<p>Synthesis wrapper for the Mempool mid-ends</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.NumBEs" class="impl"><code class="in-band"><a href="#parameter.NumBEs">NumBEs</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Number of back-ends</p>
+</div><h3 id="parameter.RegionWidth" class="impl"><code class="in-band"><a href="#parameter.RegionWidth">RegionWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Size of the region that one port covers in bytes</p>
+</div><h3 id="parameter.RegionStart" class="impl"><code class="in-band"><a href="#parameter.RegionStart">RegionStart</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Base address of the regions</p>
+</div><h3 id="parameter.RegionEnd" class="impl"><code class="in-band"><a href="#parameter.RegionEnd">RegionEnd</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>End address of the regions</p>
+</div><h3 id="parameter.AddrWidth" class="impl"><code class="in-band"><a href="#parameter.AddrWidth">AddrWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Address Width</p>
+</div><h3 id="parameter.PrintInfo" class="impl"><code class="in-band"><a href="#parameter.PrintInfo">PrintInfo</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Print information on transfers</p>
+</div><h3 id="parameter.idma_req_t" class="impl"><code class="in-band"><a href="#parameter.idma_req_t">idma_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>DMA iDMA type</p>
+</div><h3 id="parameter.idma_rsp_t" class="impl"><code class="in-band"><a href="#parameter.idma_rsp_t">idma_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>DMA iDMA request type</p>
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Clock</p>
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Reset</p>
+</div><h3 id="port.idma_req_i" class="impl"><code class="in-band"><a href="#port.idma_req_i">idma_req_i</a><span class="type-annotation">: input  idma_req_t</span></code></h3><div class="docblock">
+<p>Burst request manager</p>
+</div><h3 id="port.idma_req_valid_i" class="impl"><code class="in-band"><a href="#port.idma_req_valid_i">idma_req_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>iDMA request valid manager</p>
+</div><h3 id="port.idma_req_ready_o" class="impl"><code class="in-band"><a href="#port.idma_req_ready_o">idma_req_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>iDMA request ready manager</p>
+</div><h3 id="port.idma_rsp_o" class="impl"><code class="in-band"><a href="#port.idma_rsp_o">idma_rsp_o</a><span class="type-annotation">: output idma_rsp_t</span></code></h3><div class="docblock">
+<p>iDMA response manager</p>
+</div><h3 id="port.idma_rsp_valid_o" class="impl"><code class="in-band"><a href="#port.idma_rsp_valid_o">idma_rsp_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>iDMA response valid manager</p>
+</div><h3 id="port.idma_rsp_ready_i" class="impl"><code class="in-band"><a href="#port.idma_rsp_ready_i">idma_rsp_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>iDMA response ready manager</p>
+</div><h3 id="port.idma_busy_o" class="impl"><code class="in-band"><a href="#port.idma_busy_o">idma_busy_o</a><span class="type-annotation">: output idma_pkg::idma_busy_t</span></code></h3><div class="docblock">
+<p>DMA busy manager</p>
+</div><h3 id="port.idma_req_o" class="impl"><code class="in-band"><a href="#port.idma_req_o">idma_req_o</a><span class="type-annotation">: output idma_req_t            [NumBEs-1:0]</span></code></h3><div class="docblock">
+<p>iDMA request subordinate</p>
+</div><h3 id="port.idma_req_valid_o" class="impl"><code class="in-band"><a href="#port.idma_req_valid_o">idma_req_valid_o</a><span class="type-annotation">: output logic                 [NumBEs-1:0]</span></code></h3><div class="docblock">
+<p>iDMA request valid subordinate</p>
+</div><h3 id="port.idma_req_ready_i" class="impl"><code class="in-band"><a href="#port.idma_req_ready_i">idma_req_ready_i</a><span class="type-annotation">: input  logic                 [NumBEs-1:0]</span></code></h3><div class="docblock">
+<p>iDMA request ready subordinate</p>
+</div><h3 id="port.idma_rsp_i" class="impl"><code class="in-band"><a href="#port.idma_rsp_i">idma_rsp_i</a><span class="type-annotation">: input  idma_rsp_t            [NumBEs-1:0]</span></code></h3><div class="docblock">
+<p>iDMA response subordinate</p>
+</div><h3 id="port.idma_rsp_valid_i" class="impl"><code class="in-band"><a href="#port.idma_rsp_valid_i">idma_rsp_valid_i</a><span class="type-annotation">: input  logic                 [NumBEs-1:0]</span></code></h3><div class="docblock">
+<p>iDMA response valid subordinate</p>
+</div><h3 id="port.idma_rsp_ready_o" class="impl"><code class="in-band"><a href="#port.idma_rsp_ready_o">idma_rsp_ready_o</a><span class="type-annotation">: output logic                 [NumBEs-1:0]</span></code></h3><div class="docblock">
+<p>iDMA response ready subordinate</p>
+</div><h3 id="port.idma_busy_i" class="impl"><code class="in-band"><a href="#port.idma_busy_i">idma_busy_i</a><span class="type-annotation">: input  idma_pkg::idma_busy_t [NumBEs-1:0]</span></code></h3><div class="docblock">
+<p>DMA busy subordinate</p>
+</div><h2 id="signals" class="section-header"><a href="#signals">Signals</a></h2>
+<h3 id="signal.idma_req" class="impl"><code class="in-band"><a href="#signal.idma_req">idma_req</a><span class="type-annotation">: idma_req_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.idma_rsp" class="impl"><code class="in-band"><a href="#signal.idma_rsp">idma_rsp</a><span class="type-annotation">: idma_rsp_t</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

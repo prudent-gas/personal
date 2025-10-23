@@ -1,0 +1,156 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:07.804326139 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">idma_transport_layer_r_axi_rw_init_rw_obi</a></h1>
+<div class="docblock">
+<p>Implementing the transport layer in the iDMA backend.</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.NumAxInFlight" class="impl"><code class="in-band"><a href="#parameter.NumAxInFlight">NumAxInFlight</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Number of transaction that can be in-flight concurrently</p>
+</div><h3 id="parameter.DataWidth" class="impl"><code class="in-band"><a href="#parameter.DataWidth">DataWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Data width</p>
+</div><h3 id="parameter.BufferDepth" class="impl"><code class="in-band"><a href="#parameter.BufferDepth">BufferDepth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>The depth of the internal reorder buffer:</p>
+<ul>
+<li>
+<p>‘2’: minimal possible configuration</p>
+</li>
+<li>
+<p>‘3’: efficiently handle misaligned transfers (recommended)</p>
+</li>
+</ul>
+</div><h3 id="parameter.MaskInvalidData" class="impl"><code class="in-band"><a href="#parameter.MaskInvalidData">MaskInvalidData</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Mask invalid data on the manager interface</p>
+</div><h3 id="parameter.PrintFifoInfo" class="impl"><code class="in-band"><a href="#parameter.PrintFifoInfo">PrintFifoInfo</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Print the info of the FIFO configuration</p>
+</div><h3 id="parameter.r_dp_req_t" class="impl"><code class="in-band"><a href="#parameter.r_dp_req_t">r_dp_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p><code>r_dp_req_t</code> type:</p>
+</div><h3 id="parameter.w_dp_req_t" class="impl"><code class="in-band"><a href="#parameter.w_dp_req_t">w_dp_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p><code>w_dp_req_t</code> type:</p>
+</div><h3 id="parameter.r_dp_rsp_t" class="impl"><code class="in-band"><a href="#parameter.r_dp_rsp_t">r_dp_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p><code>r_dp_rsp_t</code> type:</p>
+</div><h3 id="parameter.w_dp_rsp_t" class="impl"><code class="in-band"><a href="#parameter.w_dp_rsp_t">w_dp_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p><code>w_dp_rsp_t</code> type:</p>
+</div><h3 id="parameter.write_meta_channel_t" class="impl"><code class="in-band"><a href="#parameter.write_meta_channel_t">write_meta_channel_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Write Meta channel type</p>
+</div><h3 id="parameter.write_meta_channel_tagged_t" class="impl"><code class="in-band"><a href="#parameter.write_meta_channel_tagged_t">write_meta_channel_tagged_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.read_meta_channel_t" class="impl"><code class="in-band"><a href="#parameter.read_meta_channel_t">read_meta_channel_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Read Meta channel type</p>
+</div><h3 id="parameter.read_meta_channel_tagged_t" class="impl"><code class="in-band"><a href="#parameter.read_meta_channel_tagged_t">read_meta_channel_tagged_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.axi_req_t" class="impl"><code class="in-band"><a href="#parameter.axi_req_t">axi_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>AXI4+ATOP Request and Response channel type</p>
+</div><h3 id="parameter.axi_rsp_t" class="impl"><code class="in-band"><a href="#parameter.axi_rsp_t">axi_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.init_req_t" class="impl"><code class="in-band"><a href="#parameter.init_req_t">init_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Memory Init Request and Response channel type</p>
+</div><h3 id="parameter.init_rsp_t" class="impl"><code class="in-band"><a href="#parameter.init_rsp_t">init_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.obi_req_t" class="impl"><code class="in-band"><a href="#parameter.obi_req_t">obi_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>OBI Request and Response channel type</p>
+</div><h3 id="parameter.obi_rsp_t" class="impl"><code class="in-band"><a href="#parameter.obi_rsp_t">obi_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.StrbWidth" class="impl"><code class="in-band"><a href="#parameter.StrbWidth">StrbWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Stobe width</p>
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Clock</p>
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Asynchronous reset, active low</p>
+</div><h3 id="port.testmode_i" class="impl"><code class="in-band"><a href="#port.testmode_i">testmode_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Testmode in</p>
+</div><h3 id="port.axi_read_req_o" class="impl"><code class="in-band"><a href="#port.axi_read_req_o">axi_read_req_o</a><span class="type-annotation">: output axi_req_t</span></code></h3><div class="docblock">
+<p>AXI4+ATOP read request</p>
+</div><h3 id="port.axi_read_rsp_i" class="impl"><code class="in-band"><a href="#port.axi_read_rsp_i">axi_read_rsp_i</a><span class="type-annotation">: input  axi_rsp_t</span></code></h3><div class="docblock">
+<p>AXI4+ATOP read response</p>
+</div><h3 id="port.init_read_req_o" class="impl"><code class="in-band"><a href="#port.init_read_req_o">init_read_req_o</a><span class="type-annotation">: output init_req_t</span></code></h3><div class="docblock">
+<p>Memory Init read request</p>
+</div><h3 id="port.init_read_rsp_i" class="impl"><code class="in-band"><a href="#port.init_read_rsp_i">init_read_rsp_i</a><span class="type-annotation">: input  init_rsp_t</span></code></h3><div class="docblock">
+<p>Memory Init read response</p>
+</div><h3 id="port.obi_read_req_o" class="impl"><code class="in-band"><a href="#port.obi_read_req_o">obi_read_req_o</a><span class="type-annotation">: output obi_req_t</span></code></h3><div class="docblock">
+<p>OBI read request</p>
+</div><h3 id="port.obi_read_rsp_i" class="impl"><code class="in-band"><a href="#port.obi_read_rsp_i">obi_read_rsp_i</a><span class="type-annotation">: input  obi_rsp_t</span></code></h3><div class="docblock">
+<p>OBI read response</p>
+</div><h3 id="port.init_write_req_o" class="impl"><code class="in-band"><a href="#port.init_write_req_o">init_write_req_o</a><span class="type-annotation">: output init_req_t</span></code></h3><div class="docblock">
+<p>Memory Init write request</p>
+</div><h3 id="port.init_write_rsp_i" class="impl"><code class="in-band"><a href="#port.init_write_rsp_i">init_write_rsp_i</a><span class="type-annotation">: input  init_rsp_t</span></code></h3><div class="docblock">
+<p>Memory Init write response</p>
+</div><h3 id="port.obi_write_req_o" class="impl"><code class="in-band"><a href="#port.obi_write_req_o">obi_write_req_o</a><span class="type-annotation">: output obi_req_t</span></code></h3><div class="docblock">
+<p>OBI write request</p>
+</div><h3 id="port.obi_write_rsp_i" class="impl"><code class="in-band"><a href="#port.obi_write_rsp_i">obi_write_rsp_i</a><span class="type-annotation">: input  obi_rsp_t</span></code></h3><div class="docblock">
+<p>OBI write response</p>
+</div><h3 id="port.r_dp_req_i" class="impl"><code class="in-band"><a href="#port.r_dp_req_i">r_dp_req_i</a><span class="type-annotation">: input  r_dp_req_t</span></code></h3><div class="docblock">
+<p>Read datapath request</p>
+</div><h3 id="port.r_dp_valid_i" class="impl"><code class="in-band"><a href="#port.r_dp_valid_i">r_dp_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Read datapath request valid</p>
+</div><h3 id="port.r_dp_ready_o" class="impl"><code class="in-band"><a href="#port.r_dp_ready_o">r_dp_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Read datapath request ready</p>
+</div><h3 id="port.r_dp_rsp_o" class="impl"><code class="in-band"><a href="#port.r_dp_rsp_o">r_dp_rsp_o</a><span class="type-annotation">: output r_dp_rsp_t</span></code></h3><div class="docblock">
+<p>Read datapath response</p>
+</div><h3 id="port.r_dp_valid_o" class="impl"><code class="in-band"><a href="#port.r_dp_valid_o">r_dp_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Read datapath response valid</p>
+</div><h3 id="port.r_dp_ready_i" class="impl"><code class="in-band"><a href="#port.r_dp_ready_i">r_dp_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Read datapath response valid</p>
+</div><h3 id="port.w_dp_req_i" class="impl"><code class="in-band"><a href="#port.w_dp_req_i">w_dp_req_i</a><span class="type-annotation">: input  w_dp_req_t</span></code></h3><div class="docblock">
+<p>Write datapath request</p>
+</div><h3 id="port.w_dp_valid_i" class="impl"><code class="in-band"><a href="#port.w_dp_valid_i">w_dp_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Write datapath request valid</p>
+</div><h3 id="port.w_dp_ready_o" class="impl"><code class="in-band"><a href="#port.w_dp_ready_o">w_dp_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Write datapath request ready</p>
+</div><h3 id="port.w_dp_rsp_o" class="impl"><code class="in-band"><a href="#port.w_dp_rsp_o">w_dp_rsp_o</a><span class="type-annotation">: output w_dp_rsp_t</span></code></h3><div class="docblock">
+<p>Write datapath response</p>
+</div><h3 id="port.w_dp_valid_o" class="impl"><code class="in-band"><a href="#port.w_dp_valid_o">w_dp_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Write datapath response valid</p>
+</div><h3 id="port.w_dp_ready_i" class="impl"><code class="in-band"><a href="#port.w_dp_ready_i">w_dp_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Write datapath response valid</p>
+</div><h3 id="port.ar_req_i" class="impl"><code class="in-band"><a href="#port.ar_req_i">ar_req_i</a><span class="type-annotation">: input  read_meta_channel_tagged_t</span></code></h3><div class="docblock">
+<p>Read meta request</p>
+</div><h3 id="port.ar_valid_i" class="impl"><code class="in-band"><a href="#port.ar_valid_i">ar_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Read meta request valid</p>
+</div><h3 id="port.ar_ready_o" class="impl"><code class="in-band"><a href="#port.ar_ready_o">ar_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Read meta request ready</p>
+</div><h3 id="port.aw_req_i" class="impl"><code class="in-band"><a href="#port.aw_req_i">aw_req_i</a><span class="type-annotation">: input  write_meta_channel_tagged_t</span></code></h3><div class="docblock">
+<p>Write meta request</p>
+</div><h3 id="port.aw_valid_i" class="impl"><code class="in-band"><a href="#port.aw_valid_i">aw_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Write meta request valid</p>
+</div><h3 id="port.aw_ready_o" class="impl"><code class="in-band"><a href="#port.aw_ready_o">aw_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Write meta request ready</p>
+</div><h3 id="port.dp_poison_i" class="impl"><code class="in-band"><a href="#port.dp_poison_i">dp_poison_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Datapath poison signal</p>
+</div><h3 id="port.r_chan_ready_o" class="impl"><code class="in-band"><a href="#port.r_chan_ready_o">r_chan_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Response channel valid and ready</p>
+</div><h3 id="port.r_chan_valid_o" class="impl"><code class="in-band"><a href="#port.r_chan_valid_o">r_chan_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.r_dp_busy_o" class="impl"><code class="in-band"><a href="#port.r_dp_busy_o">r_dp_busy_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Read part of the datapath is busy</p>
+</div><h3 id="port.w_dp_busy_o" class="impl"><code class="in-band"><a href="#port.w_dp_busy_o">w_dp_busy_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Write part of the datapath is busy</p>
+</div><h3 id="port.buffer_busy_o" class="impl"><code class="in-band"><a href="#port.buffer_busy_o">buffer_busy_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Buffer is busy</p>
+</div><h2 id="types" class="section-header"><a href="#types">Types<a></h2>
+<table>
+<tr><td><a class="type" href="type.data_t.html">data_t</a></td><td><p>Data type</p>
+</td></tr><tr><td><a class="type" href="type.strb_t.html">strb_t</a></td><td><p>Offset type</p>
+</td></tr><tr><td><a class="type" href="type.byte_t.html">byte_t</a></td><td><p>Byte type</p>
+</td></tr></table>
+<h2 id="signals" class="section-header"><a href="#signals">Signals</a></h2>
+<h3 id="signal.axi_buffer_in_valid" class="impl"><code class="in-band"><a href="#signal.axi_buffer_in_valid">axi_buffer_in_valid</a><span class="type-annotation">: strb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.init_buffer_in_valid" class="impl"><code class="in-band"><a href="#signal.init_buffer_in_valid">init_buffer_in_valid</a><span class="type-annotation">: strb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.obi_buffer_in_valid" class="impl"><code class="in-band"><a href="#signal.obi_buffer_in_valid">obi_buffer_in_valid</a><span class="type-annotation">: strb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.buffer_in_valid" class="impl"><code class="in-band"><a href="#signal.buffer_in_valid">buffer_in_valid</a><span class="type-annotation">: strb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.buffer_in_ready" class="impl"><code class="in-band"><a href="#signal.buffer_in_ready">buffer_in_ready</a><span class="type-annotation">: strb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.buffer_out_valid" class="impl"><code class="in-band"><a href="#signal.buffer_out_valid">buffer_out_valid</a><span class="type-annotation">: strb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.buffer_out_valid_shifted" class="impl"><code class="in-band"><a href="#signal.buffer_out_valid_shifted">buffer_out_valid_shifted</a><span class="type-annotation">: strb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.init_buffer_out_ready" class="impl"><code class="in-band"><a href="#signal.init_buffer_out_ready">init_buffer_out_ready</a><span class="type-annotation">: strb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.obi_buffer_out_ready" class="impl"><code class="in-band"><a href="#signal.obi_buffer_out_ready">obi_buffer_out_ready</a><span class="type-annotation">: strb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.buffer_out_ready" class="impl"><code class="in-band"><a href="#signal.buffer_out_ready">buffer_out_ready</a><span class="type-annotation">: strb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.buffer_out_ready_shifted" class="impl"><code class="in-band"><a href="#signal.buffer_out_ready_shifted">buffer_out_ready_shifted</a><span class="type-annotation">: strb_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.axi_r_dp_rsp" class="impl"><code class="in-band"><a href="#signal.axi_r_dp_rsp">axi_r_dp_rsp</a><span class="type-annotation">: r_dp_rsp_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.init_r_dp_rsp" class="impl"><code class="in-band"><a href="#signal.init_r_dp_rsp">init_r_dp_rsp</a><span class="type-annotation">: r_dp_rsp_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.obi_r_dp_rsp" class="impl"><code class="in-band"><a href="#signal.obi_r_dp_rsp">obi_r_dp_rsp</a><span class="type-annotation">: r_dp_rsp_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.init_w_dp_rsp" class="impl"><code class="in-band"><a href="#signal.init_w_dp_rsp">init_w_dp_rsp</a><span class="type-annotation">: w_dp_rsp_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.obi_w_dp_rsp" class="impl"><code class="in-band"><a href="#signal.obi_w_dp_rsp">obi_w_dp_rsp</a><span class="type-annotation">: w_dp_rsp_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.w_dp_rsp_mux" class="impl"><code class="in-band"><a href="#signal.w_dp_rsp_mux">w_dp_rsp_mux</a><span class="type-annotation">: w_dp_rsp_t</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

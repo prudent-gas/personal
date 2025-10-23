@@ -1,0 +1,49 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:21.776091833 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">passthrough_stream_fifo</a></h1>
+<div class="docblock">
+<p>Stream FIFO that does not cut the timing path. When full; pushing data is allowed if in</p>
+<p>the same cycle data is popped. Creates longer timing paths but can use buffer space more</p>
+<p>efficiently.</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.Depth" class="impl"><code class="in-band"><a href="#parameter.Depth">Depth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Depth can be arbitrary from 2 to 2**32</p>
+</div><h3 id="parameter.PrintInfo" class="impl"><code class="in-band"><a href="#parameter.PrintInfo">PrintInfo</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Print information when the simulation launches</p>
+</div><h3 id="parameter.SameCycleRW" class="impl"><code class="in-band"><a href="#parameter.SameCycleRW">SameCycleRW</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>If the FIFO is full, allow reading and writing in the same cycle</p>
+</div><h3 id="parameter.type_t" class="impl"><code class="in-band"><a href="#parameter.type_t">type_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Type of the FIFO</p>
+</div><h3 id="parameter.PointerWidth" class="impl"><code class="in-band"><a href="#parameter.PointerWidth">PointerWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Bit Width of the read and write pointers</p>
+<p>One additional bit to detect overflows</p>
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Clock</p>
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Asynchronous reset active low</p>
+</div><h3 id="port.flush_i" class="impl"><code class="in-band"><a href="#port.flush_i">flush_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Fifo flush</p>
+</div><h3 id="port.testmode_i" class="impl"><code class="in-band"><a href="#port.testmode_i">testmode_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Bypass clock gate</p>
+</div><h3 id="port.data_i" class="impl"><code class="in-band"><a href="#port.data_i">data_i</a><span class="type-annotation">: input  type_t</span></code></h3><div class="docblock">
+<p>data to push into the FIFO</p>
+</div><h3 id="port.valid_i" class="impl"><code class="in-band"><a href="#port.valid_i">valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>input data valid</p>
+</div><h3 id="port.ready_o" class="impl"><code class="in-band"><a href="#port.ready_o">ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>FIFO is not full</p>
+</div><h3 id="port.data_o" class="impl"><code class="in-band"><a href="#port.data_o">data_o</a><span class="type-annotation">: output type_t</span></code></h3><div class="docblock">
+<p>output data</p>
+</div><h3 id="port.valid_o" class="impl"><code class="in-band"><a href="#port.valid_o">valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>FIFO is not empty</p>
+</div><h3 id="port.ready_i" class="impl"><code class="in-band"><a href="#port.ready_i">ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>pop head from FIFO</p>
+</div></section>
+</body>
+</html>

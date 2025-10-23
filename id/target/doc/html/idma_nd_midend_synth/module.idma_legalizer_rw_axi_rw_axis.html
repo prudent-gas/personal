@@ -1,0 +1,109 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:21.782660652 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">idma_legalizer_rw_axi_rw_axis</a></h1>
+<div class="docblock">
+<p>Legalizes a generic 1D transfer according to the rules given by the</p>
+<p>used protocol.</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.CombinedShifter" class="impl"><code class="in-band"><a href="#parameter.CombinedShifter">CombinedShifter</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Should both data shifts be done before the dataflow element?</p>
+<p>If this is enabled, then the data inserted into the dataflow element</p>
+<p>will no longer be word aligned, but only a single shifter is needed</p>
+</div><h3 id="parameter.DataWidth" class="impl"><code class="in-band"><a href="#parameter.DataWidth">DataWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Data width</p>
+</div><h3 id="parameter.AddrWidth" class="impl"><code class="in-band"><a href="#parameter.AddrWidth">AddrWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Address width</p>
+</div><h3 id="parameter.idma_req_t" class="impl"><code class="in-band"><a href="#parameter.idma_req_t">idma_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>1D iDMA request type:</p>
+<ul>
+<li>
+<p><code>length</code>: the length of the transfer in bytes</p>
+</li>
+<li>
+<p><code>*_addr</code>: the source / target byte addresses of the transfer</p>
+</li>
+<li>
+<p><code>opt</code>: the options field</p>
+</li>
+</ul>
+</div><h3 id="parameter.idma_r_req_t" class="impl"><code class="in-band"><a href="#parameter.idma_r_req_t">idma_r_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Read request type</p>
+</div><h3 id="parameter.idma_w_req_t" class="impl"><code class="in-band"><a href="#parameter.idma_w_req_t">idma_w_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Write request type</p>
+</div><h3 id="parameter.idma_mut_tf_t" class="impl"><code class="in-band"><a href="#parameter.idma_mut_tf_t">idma_mut_tf_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Mutable transfer type</p>
+</div><h3 id="parameter.idma_mut_tf_opt_t" class="impl"><code class="in-band"><a href="#parameter.idma_mut_tf_opt_t">idma_mut_tf_opt_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Mutable options type</p>
+</div><h3 id="parameter.StrbWidth" class="impl"><code class="in-band"><a href="#parameter.StrbWidth">StrbWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Stobe width</p>
+</div><h3 id="parameter.OffsetWidth" class="impl"><code class="in-band"><a href="#parameter.OffsetWidth">OffsetWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Offset width</p>
+</div><h3 id="parameter.PageSize" class="impl"><code class="in-band"><a href="#parameter.PageSize">PageSize</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>The size of a page in byte</p>
+</div><h3 id="parameter.PageAddrWidth" class="impl"><code class="in-band"><a href="#parameter.PageAddrWidth">PageAddrWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>The width of page offset byte addresses</p>
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Clock</p>
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Asynchronous reset, active low</p>
+</div><h3 id="port.req_i" class="impl"><code class="in-band"><a href="#port.req_i">req_i</a><span class="type-annotation">: input  idma_req_t</span></code></h3><div class="docblock">
+<p>1D request</p>
+</div><h3 id="port.valid_i" class="impl"><code class="in-band"><a href="#port.valid_i">valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>1D request valid</p>
+</div><h3 id="port.ready_o" class="impl"><code class="in-band"><a href="#port.ready_o">ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>1D request ready</p>
+</div><h3 id="port.r_req_o" class="impl"><code class="in-band"><a href="#port.r_req_o">r_req_o</a><span class="type-annotation">: output idma_r_req_t</span></code></h3><div class="docblock">
+<p>Read request; contains datapath and meta information</p>
+</div><h3 id="port.r_valid_o" class="impl"><code class="in-band"><a href="#port.r_valid_o">r_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Read request valid</p>
+</div><h3 id="port.r_ready_i" class="impl"><code class="in-band"><a href="#port.r_ready_i">r_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Read request ready</p>
+</div><h3 id="port.w_req_o" class="impl"><code class="in-band"><a href="#port.w_req_o">w_req_o</a><span class="type-annotation">: output idma_w_req_t</span></code></h3><div class="docblock">
+<p>Write request; contains datapath and meta information</p>
+</div><h3 id="port.w_valid_o" class="impl"><code class="in-band"><a href="#port.w_valid_o">w_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Write request valid</p>
+</div><h3 id="port.w_ready_i" class="impl"><code class="in-band"><a href="#port.w_ready_i">w_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Write request ready</p>
+</div><h3 id="port.flush_i" class="impl"><code class="in-band"><a href="#port.flush_i">flush_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Invalidate the current burst transfer, stops emission of requests</p>
+</div><h3 id="port.kill_i" class="impl"><code class="in-band"><a href="#port.kill_i">kill_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Kill the active 1D transfer; reload a new transfer</p>
+</div><h3 id="port.r_busy_o" class="impl"><code class="in-band"><a href="#port.r_busy_o">r_busy_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Read machine of the legalizer is busy</p>
+</div><h3 id="port.w_busy_o" class="impl"><code class="in-band"><a href="#port.w_busy_o">w_busy_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Write machine of the legalizer is busy</p>
+</div><h2 id="types" class="section-header"><a href="#types">Types<a></h2>
+<table>
+<tr><td><a class="type" href="type.offset_t.html">offset_t</a></td><td><p>Offset type</p>
+</td></tr><tr><td><a class="type" href="type.addr_t.html">addr_t</a></td><td><p>Address type</p>
+</td></tr><tr><td><a class="type" href="type.page_addr_t.html">page_addr_t</a></td><td><p>Page address type</p>
+</td></tr><tr><td><a class="type" href="type.page_len_t.html">page_len_t</a></td><td><p>Page length type</p>
+</td></tr></table>
+<h2 id="signals" class="section-header"><a href="#signals">Signals</a></h2>
+<h3 id="signal.r_tf_d" class="impl"><code class="in-band"><a href="#signal.r_tf_d">r_tf_d</a><span class="type-annotation">: idma_mut_tf_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.r_tf_q" class="impl"><code class="in-band"><a href="#signal.r_tf_q">r_tf_q</a><span class="type-annotation">: idma_mut_tf_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.w_tf_d" class="impl"><code class="in-band"><a href="#signal.w_tf_d">w_tf_d</a><span class="type-annotation">: idma_mut_tf_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.w_tf_q" class="impl"><code class="in-band"><a href="#signal.w_tf_q">w_tf_q</a><span class="type-annotation">: idma_mut_tf_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.opt_tf_d" class="impl"><code class="in-band"><a href="#signal.opt_tf_d">opt_tf_d</a><span class="type-annotation">: idma_mut_tf_opt_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.opt_tf_q" class="impl"><code class="in-band"><a href="#signal.opt_tf_q">opt_tf_q</a><span class="type-annotation">: idma_mut_tf_opt_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.r_page_num_bytes_to_pb" class="impl"><code class="in-band"><a href="#signal.r_page_num_bytes_to_pb">r_page_num_bytes_to_pb</a><span class="type-annotation">: page_len_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.r_num_bytes_to_pb" class="impl"><code class="in-band"><a href="#signal.r_num_bytes_to_pb">r_num_bytes_to_pb</a><span class="type-annotation">: page_len_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.w_page_num_bytes_to_pb" class="impl"><code class="in-band"><a href="#signal.w_page_num_bytes_to_pb">w_page_num_bytes_to_pb</a><span class="type-annotation">: page_len_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.w_num_bytes_to_pb" class="impl"><code class="in-band"><a href="#signal.w_num_bytes_to_pb">w_num_bytes_to_pb</a><span class="type-annotation">: page_len_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.c_num_bytes_to_pb" class="impl"><code class="in-band"><a href="#signal.c_num_bytes_to_pb">c_num_bytes_to_pb</a><span class="type-annotation">: page_len_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.r_num_bytes_possible" class="impl"><code class="in-band"><a href="#signal.r_num_bytes_possible">r_num_bytes_possible</a><span class="type-annotation">: page_len_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.r_num_bytes" class="impl"><code class="in-band"><a href="#signal.r_num_bytes">r_num_bytes</a><span class="type-annotation">: page_len_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.r_addr_offset" class="impl"><code class="in-band"><a href="#signal.r_addr_offset">r_addr_offset</a><span class="type-annotation">: offset_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.w_num_bytes_possible" class="impl"><code class="in-band"><a href="#signal.w_num_bytes_possible">w_num_bytes_possible</a><span class="type-annotation">: page_len_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.w_num_bytes" class="impl"><code class="in-band"><a href="#signal.w_num_bytes">w_num_bytes</a><span class="type-annotation">: page_len_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.w_addr_offset" class="impl"><code class="in-band"><a href="#signal.w_addr_offset">w_addr_offset</a><span class="type-annotation">: offset_t</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

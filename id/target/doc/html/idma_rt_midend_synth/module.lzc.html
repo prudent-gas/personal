@@ -1,0 +1,39 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:46.439549901 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">lzc</a></h1>
+<div class="docblock">
+<p>A trailing zero counter / leading zero counter.</p>
+<p>Set MODE to 0 for trailing zero counter =&gt; cnt_o is the number of trailing zeros (from the LSB)</p>
+<p>Set MODE to 1 for leading zero counter  =&gt; cnt_o is the number of leading zeros  (from the MSB)</p>
+<p>If the input does not contain a zero, <code>empty_o</code> is asserted. Additionally <code>cnt_o</code> contains</p>
+<p>the maximum number of zeros - 1. For example:</p>
+<p>in_i = 000_0000, empty_o = 1, cnt_o = 6 (mode = 0)</p>
+<p>in_i = 000_0001, empty_o = 0, cnt_o = 0 (mode = 0)</p>
+<p>in_i = 000_1000, empty_o = 0, cnt_o = 3 (mode = 0)</p>
+<p>Furthermore, this unit contains a more efficient implementation for Verilator (simulation only).</p>
+<p>This speeds up simulation significantly.</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.WIDTH" class="impl"><code class="in-band"><a href="#parameter.WIDTH">WIDTH</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>The width of the input vector.</p>
+</div><h3 id="parameter.MODE" class="impl"><code class="in-band"><a href="#parameter.MODE">MODE</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Mode selection: 0 -&gt; trailing zero, 1 -&gt; leading zero</p>
+</div><h3 id="parameter.CNT_WIDTH" class="impl"><code class="in-band"><a href="#parameter.CNT_WIDTH">CNT_WIDTH</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Dependent parameter. Do <strong>not</strong> change!</p>
+<p>Width of the output signal with the zero count.</p>
+</div><h3 id="parameter.NumLevels" class="impl"><code class="in-band"><a href="#parameter.NumLevels">NumLevels</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.in_i" class="impl"><code class="in-band"><a href="#port.in_i">in_i</a><span class="type-annotation">: input  logic [WIDTH-1:0]</span></code></h3><div class="docblock">
+<p>Input vector to be counted.</p>
+</div><h3 id="port.cnt_o" class="impl"><code class="in-band"><a href="#port.cnt_o">cnt_o</a><span class="type-annotation">: output logic [CNT_WIDTH-1:0]</span></code></h3><div class="docblock">
+<p>Count of the leading / trailing zeros.</p>
+</div><h3 id="port.empty_o" class="impl"><code class="in-band"><a href="#port.empty_o">empty_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Counter is empty: Asserted if all bits in in_i are zero.</p>
+</div></section>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:02:37.916041772 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Typedef <a class="type">w_dp_req_t</a></h1>
+<pre>typedef struct packed {
+        idma_pkg::protocol_e dst_protocol;
+        offset_t             offset;
+        offset_t             tailer;
+        offset_t             shift;
+        axi_pkg::len_t       num_beats;
+        logic                is_single;
+    } w_dp_req_t;</pre>
+<p>The datapath write request type holds all the information required to configure the write</p>
+<p>part of the datapath. The type consists of:</p>
+<ul>
+<li>
+<p><code>offset</code>: The bus offset of the write</p>
+</li>
+<li>
+<p><code>trailer</code>: How many empty bytes are required to pad the transfer to a multiple of the</p>
+<pre><code>       bus width.
+</code></pre>
+</li>
+<li>
+<p><code>shift</code>: The amount the data needs to be shifted</p>
+</li>
+<li>
+<p><code>num_beats</code>: The number of beats this burst consist of</p>
+</li>
+<li>
+<p><code>is_single</code>: Is this transfer just one beat long? <code>(len == 0)</code></p>
+</li>
+</ul>
+</section>
+</body>
+</html>

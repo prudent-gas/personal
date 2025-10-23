@@ -1,0 +1,110 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:21.777380217 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">idma_error_handler</a></h1>
+<div class="docblock">
+<p>Handles AXI read and write error on the manager interface.</p>
+<p>Currently two modes are supported:</p>
+<ul>
+<li>
+<p>‘CONTINUE’: just continue with the 1D transfer</p>
+</li>
+<li>
+<p>‘ABORT’: abort the current 1D transfer</p>
+</li>
+</ul>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.MetaFifoDepth" class="impl"><code class="in-band"><a href="#parameter.MetaFifoDepth">MetaFifoDepth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Number of active transfers in the data path as well as in the memory system</p>
+</div><h3 id="parameter.PrintFifoInfo" class="impl"><code class="in-band"><a href="#parameter.PrintFifoInfo">PrintFifoInfo</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Print the info of the FIFO configuration</p>
+</div><h3 id="parameter.idma_rsp_t" class="impl"><code class="in-band"><a href="#parameter.idma_rsp_t">idma_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>1D iDMA response type</p>
+</div><h3 id="parameter.idma_eh_req_t" class="impl"><code class="in-band"><a href="#parameter.idma_eh_req_t">idma_eh_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Error handling request type</p>
+</div><h3 id="parameter.addr_t" class="impl"><code class="in-band"><a href="#parameter.addr_t">addr_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Address type</p>
+</div><h3 id="parameter.r_dp_rsp_t" class="impl"><code class="in-band"><a href="#parameter.r_dp_rsp_t">r_dp_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Read datapath response type</p>
+</div><h3 id="parameter.w_dp_rsp_t" class="impl"><code class="in-band"><a href="#parameter.w_dp_rsp_t">w_dp_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Write datapath response type</p>
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Clock</p>
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Asynchronous reset, active low</p>
+</div><h3 id="port.testmode_i" class="impl"><code class="in-band"><a href="#port.testmode_i">testmode_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Testmode in</p>
+</div><h3 id="port.rsp_o" class="impl"><code class="in-band"><a href="#port.rsp_o">rsp_o</a><span class="type-annotation">: output idma_rsp_t</span></code></h3><div class="docblock">
+<p>1D iDMA response</p>
+</div><h3 id="port.rsp_valid_o" class="impl"><code class="in-band"><a href="#port.rsp_valid_o">rsp_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>1D iDMA response valid</p>
+</div><h3 id="port.rsp_ready_i" class="impl"><code class="in-band"><a href="#port.rsp_ready_i">rsp_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>1D iDMA response ready</p>
+</div><h3 id="port.eh_i" class="impl"><code class="in-band"><a href="#port.eh_i">eh_i</a><span class="type-annotation">: input  idma_eh_req_t</span></code></h3><div class="docblock">
+<p>Error handling request</p>
+</div><h3 id="port.eh_valid_i" class="impl"><code class="in-band"><a href="#port.eh_valid_i">eh_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Error handling request valid</p>
+</div><h3 id="port.eh_ready_o" class="impl"><code class="in-band"><a href="#port.eh_ready_o">eh_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Error handling request ready</p>
+</div><h3 id="port.req_valid_i" class="impl"><code class="in-band"><a href="#port.req_valid_i">req_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>1D iDMA request valid</p>
+</div><h3 id="port.req_ready_i" class="impl"><code class="in-band"><a href="#port.req_ready_i">req_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>1D iDMA request ready</p>
+</div><h3 id="port.r_addr_i" class="impl"><code class="in-band"><a href="#port.r_addr_i">r_addr_i</a><span class="type-annotation">: input  addr_t</span></code></h3><div class="docblock">
+<p>The current read address (burst address) injected into the datapath</p>
+</div><h3 id="port.r_consume_i" class="impl"><code class="in-band"><a href="#port.r_consume_i">r_consume_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>The address is consumed by the datapath</p>
+</div><h3 id="port.w_addr_i" class="impl"><code class="in-band"><a href="#port.w_addr_i">w_addr_i</a><span class="type-annotation">: input  addr_t</span></code></h3><div class="docblock">
+<p>The current write address (burst address) injected into the datapath</p>
+</div><h3 id="port.w_consume_i" class="impl"><code class="in-band"><a href="#port.w_consume_i">w_consume_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>The address is consumed by the datapath</p>
+</div><h3 id="port.legalizer_flush_o" class="impl"><code class="in-band"><a href="#port.legalizer_flush_o">legalizer_flush_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Invalidate the current burst transfer, stops emission of requests</p>
+</div><h3 id="port.legalizer_kill_o" class="impl"><code class="in-band"><a href="#port.legalizer_kill_o">legalizer_kill_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Kill the active 1D transfer; reload a new transfer</p>
+</div><h3 id="port.dp_busy_i" class="impl"><code class="in-band"><a href="#port.dp_busy_i">dp_busy_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>The datapath is busy at the moment. This includes the read &amp; write machines as well as the</p>
+<p>buffer.</p>
+</div><h3 id="port.dp_poison_o" class="impl"><code class="in-band"><a href="#port.dp_poison_o">dp_poison_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>If the datapath has the ability to mask invalid data (MaskInvalidData set to True), this</p>
+<p>flag masks the output during flushes to reduce toggling activities</p>
+</div><h3 id="port.r_dp_rsp_i" class="impl"><code class="in-band"><a href="#port.r_dp_rsp_i">r_dp_rsp_i</a><span class="type-annotation">: input  r_dp_rsp_t</span></code></h3><div class="docblock">
+<p>Read datapath response</p>
+</div><h3 id="port.r_dp_valid_i" class="impl"><code class="in-band"><a href="#port.r_dp_valid_i">r_dp_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Read datapath response valid</p>
+</div><h3 id="port.r_dp_ready_o" class="impl"><code class="in-band"><a href="#port.r_dp_ready_o">r_dp_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Read datapath response ready</p>
+</div><h3 id="port.w_dp_rsp_i" class="impl"><code class="in-band"><a href="#port.w_dp_rsp_i">w_dp_rsp_i</a><span class="type-annotation">: input  w_dp_rsp_t</span></code></h3><div class="docblock">
+<p>Write datapath response</p>
+</div><h3 id="port.w_dp_valid_i" class="impl"><code class="in-band"><a href="#port.w_dp_valid_i">w_dp_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Write datapath response valid</p>
+</div><h3 id="port.w_dp_ready_o" class="impl"><code class="in-band"><a href="#port.w_dp_ready_o">w_dp_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Write datapath response ready</p>
+</div><h3 id="port.w_last_burst_i" class="impl"><code class="in-band"><a href="#port.w_last_burst_i">w_last_burst_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Write datapath currently works on last burst of a 1D transfer</p>
+</div><h3 id="port.w_super_last_i" class="impl"><code class="in-band"><a href="#port.w_super_last_i">w_super_last_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>The last flag which is assigned by the controlling unit</p>
+</div><h3 id="port.fsm_busy_o" class="impl"><code class="in-band"><a href="#port.fsm_busy_o">fsm_busy_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Error handler is busy</p>
+</div><h3 id="port.cnt_busy_o" class="impl"><code class="in-band"><a href="#port.cnt_busy_o">cnt_busy_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h2 id="types" class="section-header"><a href="#types">Types<a></h2>
+<table>
+<tr><td><a class="type" href="type.num_outst_t.html">num_outst_t</a></td><td><p>The number of outstanding 1D transfers in the datapath needs to be tracked with a simple</p>
+</td></tr><tr><td><a class="type" href="type.error_state_e.html">error_state_e</a></td><td><p>The state of the error handling FSM:</p>
+</td></tr></table>
+<h2 id="signals" class="section-header"><a href="#signals">Signals</a></h2>
+<h3 id="signal.state_d" class="impl"><code class="in-band"><a href="#signal.state_d">state_d</a><span class="type-annotation">: error_state_e</span></code></h3><div class="docblock">
+</div><h3 id="signal.state_q" class="impl"><code class="in-band"><a href="#signal.state_q">state_q</a><span class="type-annotation">: error_state_e</span></code></h3><div class="docblock">
+</div><h3 id="signal.r_addr_head" class="impl"><code class="in-band"><a href="#signal.r_addr_head">r_addr_head</a><span class="type-annotation">: addr_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.w_addr_head" class="impl"><code class="in-band"><a href="#signal.w_addr_head">w_addr_head</a><span class="type-annotation">: addr_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.num_outst_d" class="impl"><code class="in-band"><a href="#signal.num_outst_d">num_outst_d</a><span class="type-annotation">: num_outst_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.num_outst_q" class="impl"><code class="in-band"><a href="#signal.num_outst_q">num_outst_q</a><span class="type-annotation">: num_outst_t</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

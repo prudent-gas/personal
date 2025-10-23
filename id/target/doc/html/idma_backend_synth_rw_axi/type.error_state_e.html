@@ -1,0 +1,40 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:02:30.962590017 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Typedef <a class="type">error_state_e</a></h1>
+<pre>typedef enum logic [2:0] {
+        IDLE,
+        WAIT,
+        WAIT_LAST_W,
+        EMIT_EXTRA_RSP,
+        LEG_FLUSH
+    } error_state_e;</pre>
+<p>The state of the error handling FSM:</p>
+<ul>
+<li>
+<p><code>IDLE</code>: The idle state, error handler operates in pass-trough</p>
+</li>
+<li>
+<p><code>WAIT</code>: Error occurred and the error handler waits now for a frontend response.</p>
+</li>
+<li>
+<p><code>WAIT_LAST_W</code>: Similar to <code>WAIT</code> state; but an error happened in the last write burst</p>
+<pre><code>           of a 1D transfer. We have to generate an additional response after handling
+
+           the error using the `EMIT_EXTRA_RSP` state.
+</code></pre>
+</li>
+<li>
+<p><code>EMIT_EXTRA_RSP</code>: Send an extra response</p>
+</li>
+<li>
+<p><code>LEG_FLUSH</code>: Flush the legalizer in the case of an aborted transfer</p>
+</li>
+</ul>
+</section>
+</body>
+</html>

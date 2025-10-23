@@ -1,0 +1,30 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:21.80065013 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">idma_nd_counter</a></h1>
+<div class="docblock">
+<p>A simple counter needed for the n-dimensional midend.</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.Width" class="impl"><code class="in-band"><a href="#parameter.Width">Width</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>The width of the counter</p>
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Clock</p>
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Asynchronous reset, active low</p>
+</div><h3 id="port.en_i" class="impl"><code class="in-band"><a href="#port.en_i">en_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Enable the counter</p>
+</div><h3 id="port.clear_i" class="impl"><code class="in-band"><a href="#port.clear_i">clear_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Clear the counter</p>
+</div><h3 id="port.limit_i" class="impl"><code class="in-band"><a href="#port.limit_i">limit_i</a><span class="type-annotation">: input  logic [Width-1:0]</span></code></h3><div class="docblock">
+<p>The limit where the counter overflows</p>
+</div><h3 id="port.done_o" class="impl"><code class="in-band"><a href="#port.done_o">done_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Overflow signal</p>
+</div></section>
+</body>
+</html>

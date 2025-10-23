@@ -1,0 +1,29 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:02:30.978214131 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Typedef <a class="type">idma_mut_tf_opt_t</a></h1>
+<pre>typedef struct packed {
+        idma_pkg::protocol_e    src_protocol;
+        idma_pkg::protocol_e    dst_protocol;
+        offset_t                read_shift;
+        offset_t                write_shift;
+        logic                   decouple_rw;
+        logic                   decouple_aw;
+        logic [2:0]             src_max_llen;
+        logic [2:0]             dst_max_llen;
+        logic                   src_reduce_len;
+        logic                   dst_reduce_len;
+        id_t                    axi_id;
+        idma_pkg::axi_options_t src_axi_opt;
+        idma_pkg::axi_options_t dst_axi_opt;
+        logic                   super_last;
+    } idma_mut_tf_opt_t;</pre>
+<p>The mutable transfer options type holds important information that is mutated by the</p>
+<p><code>legalizer</code> block.</p>
+</section>
+</body>
+</html>

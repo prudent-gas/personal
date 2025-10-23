@@ -1,0 +1,32 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:02:53.072037336 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Typedef <a class="type">idma_w_req_t</a></h1>
+<pre>typedef struct packed {
+        w_dp_req_t           w_dp_req;
+        write_meta_channel_t aw_req;
+        logic                last;
+        logic                super_last;
+        logic                decouple_aw;
+    } idma_w_req_t;</pre>
+<p>The iDMA write request bundles an <code>AW</code> type and a datapath write response type together. It</p>
+<p>has an additional flags:</p>
+<ul>
+<li>
+<p><code>last</code>: indicating the current burst is the last one of the generic 1D transfer currently</p>
+<p>being processed</p>
+</li>
+<li>
+<p><code>midend_last</code>: The current transfer is marked by the controlling as last</p>
+</li>
+<li>
+<p><code>decouple_aw</code>: indicates this is an R-AW decoupled transfer</p>
+</li>
+</ul>
+</section>
+</body>
+</html>

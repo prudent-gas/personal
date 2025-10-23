@@ -1,0 +1,28 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:07.800005431 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">stream_join</a></h1>
+<div class="docblock">
+<p>Stream join: Joins a parametrizable number of input streams (i.e., valid-ready handshaking with</p>
+<p>dependency rules as in AXI4) to a single output stream.  The output handshake happens only once</p>
+<p>all inputs are valid.  The data channel flows outside of this module.</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.N_INP" class="impl"><code class="in-band"><a href="#parameter.N_INP">N_INP</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Number of input streams</p>
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.inp_valid_i" class="impl"><code class="in-band"><a href="#port.inp_valid_i">inp_valid_i</a><span class="type-annotation">: input  logic  [N_INP-1:0]</span></code></h3><div class="docblock">
+<p>Input streams valid handshakes</p>
+</div><h3 id="port.inp_ready_o" class="impl"><code class="in-band"><a href="#port.inp_ready_o">inp_ready_o</a><span class="type-annotation">: output logic  [N_INP-1:0]</span></code></h3><div class="docblock">
+<p>Input streams ready handshakes</p>
+</div><h3 id="port.oup_valid_o" class="impl"><code class="in-band"><a href="#port.oup_valid_o">oup_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>Output stream valid handshake</p>
+</div><h3 id="port.oup_ready_i" class="impl"><code class="in-band"><a href="#port.oup_ready_i">oup_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>Output stream ready handshake</p>
+</div></section>
+</body>
+</html>

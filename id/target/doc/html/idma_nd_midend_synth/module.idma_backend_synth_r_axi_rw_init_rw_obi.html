@@ -1,0 +1,196 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:21.797156508 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">idma_backend_synth_r_axi_rw_init_rw_obi</a></h1>
+<div class="docblock">
+<p>Synthesis wrapper for the iDMA backend. Unpacks all the interfaces to simple logic vectors</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.DataWidth" class="impl"><code class="in-band"><a href="#parameter.DataWidth">DataWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Data width</p>
+</div><h3 id="parameter.AddrWidth" class="impl"><code class="in-band"><a href="#parameter.AddrWidth">AddrWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Address width</p>
+</div><h3 id="parameter.UserWidth" class="impl"><code class="in-band"><a href="#parameter.UserWidth">UserWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>AXI user width</p>
+</div><h3 id="parameter.AxiIdWidth" class="impl"><code class="in-band"><a href="#parameter.AxiIdWidth">AxiIdWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>AXI ID width</p>
+</div><h3 id="parameter.NumAxInFlight" class="impl"><code class="in-band"><a href="#parameter.NumAxInFlight">NumAxInFlight</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Number of transaction that can be in-flight concurrently</p>
+</div><h3 id="parameter.BufferDepth" class="impl"><code class="in-band"><a href="#parameter.BufferDepth">BufferDepth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>The depth of the internal reorder buffer:</p>
+<ul>
+<li>
+<p>‘2’: minimal possible configuration</p>
+</li>
+<li>
+<p>‘3’: efficiently handle misaligned transfers (recommended)</p>
+</li>
+</ul>
+</div><h3 id="parameter.TFLenWidth" class="impl"><code class="in-band"><a href="#parameter.TFLenWidth">TFLenWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>With of a transfer: max transfer size is <code>2**TFLenWidth</code> bytes</p>
+</div><h3 id="parameter.MemSysDepth" class="impl"><code class="in-band"><a href="#parameter.MemSysDepth">MemSysDepth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>The depth of the memory system the backend is attached to</p>
+</div><h3 id="parameter.CombinedShifter" class="impl"><code class="in-band"><a href="#parameter.CombinedShifter">CombinedShifter</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Should both data shifts be done before the dataflow element?</p>
+<p>If this is enabled, then the data inserted into the dataflow element</p>
+<p>will no longer be word aligned, but only a single shifter is needed</p>
+</div><h3 id="parameter.MaskInvalidData" class="impl"><code class="in-band"><a href="#parameter.MaskInvalidData">MaskInvalidData</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Mask invalid data on the manager interface</p>
+</div><h3 id="parameter.RAWCouplingAvail" class="impl"><code class="in-band"><a href="#parameter.RAWCouplingAvail">RAWCouplingAvail</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Should the <code>R</code>-<code>AW</code> coupling hardware be present? (recommended)</p>
+</div><h3 id="parameter.HardwareLegalizer" class="impl"><code class="in-band"><a href="#parameter.HardwareLegalizer">HardwareLegalizer</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Should hardware legalization be present? (recommended)</p>
+<p>If not, software legalization is required to ensure the transfers are</p>
+<p>AXI4-conformal</p>
+</div><h3 id="parameter.RejectZeroTransfers" class="impl"><code class="in-band"><a href="#parameter.RejectZeroTransfers">RejectZeroTransfers</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Reject zero-length transfers</p>
+</div><h3 id="parameter.ErrorHandling" class="impl"><code class="in-band"><a href="#parameter.ErrorHandling">ErrorHandling</a><span class="type-annotation">: bit</span></code></h3><div class="docblock">
+<p>Should the error handler be present?</p>
+</div><h3 id="parameter.StrbWidth" class="impl"><code class="in-band"><a href="#parameter.StrbWidth">StrbWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Strobe Width (do not override!)</p>
+</div><h3 id="parameter.OffsetWidth" class="impl"><code class="in-band"><a href="#parameter.OffsetWidth">OffsetWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Offset Width (do not override!)</p>
+</div><h3 id="parameter.addr_t" class="impl"><code class="in-band"><a href="#parameter.addr_t">addr_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Address type (do not override!)</p>
+</div><h3 id="parameter.data_t" class="impl"><code class="in-band"><a href="#parameter.data_t">data_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Data type (do not override!)</p>
+</div><h3 id="parameter.strb_t" class="impl"><code class="in-band"><a href="#parameter.strb_t">strb_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Strobe type (do not override!)</p>
+</div><h3 id="parameter.user_t" class="impl"><code class="in-band"><a href="#parameter.user_t">user_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>User type (do not override!)</p>
+</div><h3 id="parameter.id_t" class="impl"><code class="in-band"><a href="#parameter.id_t">id_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>ID type (do not override!)</p>
+</div><h3 id="parameter.tf_len_t" class="impl"><code class="in-band"><a href="#parameter.tf_len_t">tf_len_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Transfer length type (do not override!)</p>
+</div><h3 id="parameter.offset_t" class="impl"><code class="in-band"><a href="#parameter.offset_t">offset_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Offset type (do not override!)</p>
+</div><h3 id="parameter.ErrorCap" class="impl"><code class="in-band"><a href="#parameter.ErrorCap">ErrorCap</a><span class="type-annotation">: idma_pkg::error_cap_e</span></code></h3><div class="docblock">
+<p>Define the error handling capability</p>
+</div><h3 id="parameter.axi_ar_chan_width" class="impl"><code class="in-band"><a href="#parameter.axi_ar_chan_width">axi_ar_chan_width</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h3 id="parameter.init_req_chan_width" class="impl"><code class="in-band"><a href="#parameter.init_req_chan_width">init_req_chan_width</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h3 id="parameter.obi_a_chan_width" class="impl"><code class="in-band"><a href="#parameter.obi_a_chan_width">obi_a_chan_width</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.test_i" class="impl"><code class="in-band"><a href="#port.test_i">test_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.req_valid_i" class="impl"><code class="in-band"><a href="#port.req_valid_i">req_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.req_ready_o" class="impl"><code class="in-band"><a href="#port.req_ready_o">req_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.req_length_i" class="impl"><code class="in-band"><a href="#port.req_length_i">req_length_i</a><span class="type-annotation">: input  tf_len_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_src_addr_i" class="impl"><code class="in-band"><a href="#port.req_src_addr_i">req_src_addr_i</a><span class="type-annotation">: input  addr_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_dst_addr_i" class="impl"><code class="in-band"><a href="#port.req_dst_addr_i">req_dst_addr_i</a><span class="type-annotation">: input  addr_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_src_protocol_i" class="impl"><code class="in-band"><a href="#port.req_src_protocol_i">req_src_protocol_i</a><span class="type-annotation">: input  idma_pkg::protocol_e</span></code></h3><div class="docblock">
+</div><h3 id="port.req_dst_protocol_i" class="impl"><code class="in-band"><a href="#port.req_dst_protocol_i">req_dst_protocol_i</a><span class="type-annotation">: input  idma_pkg::protocol_e</span></code></h3><div class="docblock">
+</div><h3 id="port.req_axi_id_i" class="impl"><code class="in-band"><a href="#port.req_axi_id_i">req_axi_id_i</a><span class="type-annotation">: input  id_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_src_burst_i" class="impl"><code class="in-band"><a href="#port.req_src_burst_i">req_src_burst_i</a><span class="type-annotation">: input  axi_pkg::burst_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_src_cache_i" class="impl"><code class="in-band"><a href="#port.req_src_cache_i">req_src_cache_i</a><span class="type-annotation">: input  axi_pkg::cache_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_src_lock_i" class="impl"><code class="in-band"><a href="#port.req_src_lock_i">req_src_lock_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.req_src_prot_i" class="impl"><code class="in-band"><a href="#port.req_src_prot_i">req_src_prot_i</a><span class="type-annotation">: input  axi_pkg::prot_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_src_qos_i" class="impl"><code class="in-band"><a href="#port.req_src_qos_i">req_src_qos_i</a><span class="type-annotation">: input  axi_pkg::qos_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_src_region_i" class="impl"><code class="in-band"><a href="#port.req_src_region_i">req_src_region_i</a><span class="type-annotation">: input  axi_pkg::region_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_dst_burst_i" class="impl"><code class="in-band"><a href="#port.req_dst_burst_i">req_dst_burst_i</a><span class="type-annotation">: input  axi_pkg::burst_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_dst_cache_i" class="impl"><code class="in-band"><a href="#port.req_dst_cache_i">req_dst_cache_i</a><span class="type-annotation">: input  axi_pkg::cache_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_dst_lock_i" class="impl"><code class="in-band"><a href="#port.req_dst_lock_i">req_dst_lock_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.req_dst_prot_i" class="impl"><code class="in-band"><a href="#port.req_dst_prot_i">req_dst_prot_i</a><span class="type-annotation">: input  axi_pkg::prot_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_dst_qos_i" class="impl"><code class="in-band"><a href="#port.req_dst_qos_i">req_dst_qos_i</a><span class="type-annotation">: input  axi_pkg::qos_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_dst_region_i" class="impl"><code class="in-band"><a href="#port.req_dst_region_i">req_dst_region_i</a><span class="type-annotation">: input  axi_pkg::region_t</span></code></h3><div class="docblock">
+</div><h3 id="port.req_decouple_aw_i" class="impl"><code class="in-band"><a href="#port.req_decouple_aw_i">req_decouple_aw_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.req_decouple_rw_i" class="impl"><code class="in-band"><a href="#port.req_decouple_rw_i">req_decouple_rw_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.req_src_max_llen_i" class="impl"><code class="in-band"><a href="#port.req_src_max_llen_i">req_src_max_llen_i</a><span class="type-annotation">: input  logic [2:0]</span></code></h3><div class="docblock">
+</div><h3 id="port.req_dst_max_llen_i" class="impl"><code class="in-band"><a href="#port.req_dst_max_llen_i">req_dst_max_llen_i</a><span class="type-annotation">: input  logic [2:0]</span></code></h3><div class="docblock">
+</div><h3 id="port.req_src_reduce_len_i" class="impl"><code class="in-band"><a href="#port.req_src_reduce_len_i">req_src_reduce_len_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.req_dst_reduce_len_i" class="impl"><code class="in-band"><a href="#port.req_dst_reduce_len_i">req_dst_reduce_len_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.req_last_i" class="impl"><code class="in-band"><a href="#port.req_last_i">req_last_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.rsp_valid_o" class="impl"><code class="in-band"><a href="#port.rsp_valid_o">rsp_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.rsp_ready_i" class="impl"><code class="in-band"><a href="#port.rsp_ready_i">rsp_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.rsp_cause_o" class="impl"><code class="in-band"><a href="#port.rsp_cause_o">rsp_cause_o</a><span class="type-annotation">: output axi_pkg::resp_t</span></code></h3><div class="docblock">
+</div><h3 id="port.rsp_err_type_o" class="impl"><code class="in-band"><a href="#port.rsp_err_type_o">rsp_err_type_o</a><span class="type-annotation">: output idma_pkg::err_type_t</span></code></h3><div class="docblock">
+</div><h3 id="port.rsp_burst_addr_o" class="impl"><code class="in-band"><a href="#port.rsp_burst_addr_o">rsp_burst_addr_o</a><span class="type-annotation">: output addr_t</span></code></h3><div class="docblock">
+</div><h3 id="port.rsp_error_o" class="impl"><code class="in-band"><a href="#port.rsp_error_o">rsp_error_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.rsp_last_o" class="impl"><code class="in-band"><a href="#port.rsp_last_o">rsp_last_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.eh_req_valid_i" class="impl"><code class="in-band"><a href="#port.eh_req_valid_i">eh_req_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.eh_req_ready_o" class="impl"><code class="in-band"><a href="#port.eh_req_ready_o">eh_req_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.eh_req_i" class="impl"><code class="in-band"><a href="#port.eh_req_i">eh_req_i</a><span class="type-annotation">: input  idma_pkg::idma_eh_req_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_id_o" class="impl"><code class="in-band"><a href="#port.axi_ar_id_o">axi_ar_id_o</a><span class="type-annotation">: output id_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_addr_o" class="impl"><code class="in-band"><a href="#port.axi_ar_addr_o">axi_ar_addr_o</a><span class="type-annotation">: output addr_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_len_o" class="impl"><code class="in-band"><a href="#port.axi_ar_len_o">axi_ar_len_o</a><span class="type-annotation">: output axi_pkg::len_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_size_o" class="impl"><code class="in-band"><a href="#port.axi_ar_size_o">axi_ar_size_o</a><span class="type-annotation">: output axi_pkg::size_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_burst_o" class="impl"><code class="in-band"><a href="#port.axi_ar_burst_o">axi_ar_burst_o</a><span class="type-annotation">: output axi_pkg::burst_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_lock_o" class="impl"><code class="in-band"><a href="#port.axi_ar_lock_o">axi_ar_lock_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_cache_o" class="impl"><code class="in-band"><a href="#port.axi_ar_cache_o">axi_ar_cache_o</a><span class="type-annotation">: output axi_pkg::cache_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_prot_o" class="impl"><code class="in-band"><a href="#port.axi_ar_prot_o">axi_ar_prot_o</a><span class="type-annotation">: output axi_pkg::prot_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_qos_o" class="impl"><code class="in-band"><a href="#port.axi_ar_qos_o">axi_ar_qos_o</a><span class="type-annotation">: output axi_pkg::qos_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_region_o" class="impl"><code class="in-band"><a href="#port.axi_ar_region_o">axi_ar_region_o</a><span class="type-annotation">: output axi_pkg::region_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_user_o" class="impl"><code class="in-band"><a href="#port.axi_ar_user_o">axi_ar_user_o</a><span class="type-annotation">: output user_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_valid_o" class="impl"><code class="in-band"><a href="#port.axi_ar_valid_o">axi_ar_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_ready_i" class="impl"><code class="in-band"><a href="#port.axi_ar_ready_i">axi_ar_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_r_id_i" class="impl"><code class="in-band"><a href="#port.axi_r_id_i">axi_r_id_i</a><span class="type-annotation">: input  id_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_r_data_i" class="impl"><code class="in-band"><a href="#port.axi_r_data_i">axi_r_data_i</a><span class="type-annotation">: input  data_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_r_resp_i" class="impl"><code class="in-band"><a href="#port.axi_r_resp_i">axi_r_resp_i</a><span class="type-annotation">: input  axi_pkg::resp_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_r_last_i" class="impl"><code class="in-band"><a href="#port.axi_r_last_i">axi_r_last_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_r_user_i" class="impl"><code class="in-band"><a href="#port.axi_r_user_i">axi_r_user_i</a><span class="type-annotation">: input  user_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_r_valid_i" class="impl"><code class="in-band"><a href="#port.axi_r_valid_i">axi_r_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_r_ready_o" class="impl"><code class="in-band"><a href="#port.axi_r_ready_o">axi_r_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.init_read_req_valid_o" class="impl"><code class="in-band"><a href="#port.init_read_req_valid_o">init_read_req_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.init_read_req_config_o" class="impl"><code class="in-band"><a href="#port.init_read_req_config_o">init_read_req_config_o</a><span class="type-annotation">: output addr_t</span></code></h3><div class="docblock">
+</div><h3 id="port.init_read_req_ready_i" class="impl"><code class="in-band"><a href="#port.init_read_req_ready_i">init_read_req_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.init_read_rsp_valid_i" class="impl"><code class="in-band"><a href="#port.init_read_rsp_valid_i">init_read_rsp_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.init_read_rsp_init_i" class="impl"><code class="in-band"><a href="#port.init_read_rsp_init_i">init_read_rsp_init_i</a><span class="type-annotation">: input  data_t</span></code></h3><div class="docblock">
+</div><h3 id="port.init_read_rsp_ready_o" class="impl"><code class="in-band"><a href="#port.init_read_rsp_ready_o">init_read_rsp_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_read_req_a_req_o" class="impl"><code class="in-band"><a href="#port.obi_read_req_a_req_o">obi_read_req_a_req_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_read_req_a_addr_o" class="impl"><code class="in-band"><a href="#port.obi_read_req_a_addr_o">obi_read_req_a_addr_o</a><span class="type-annotation">: output addr_t</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_read_req_a_we_o" class="impl"><code class="in-band"><a href="#port.obi_read_req_a_we_o">obi_read_req_a_we_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_read_req_a_be_o" class="impl"><code class="in-band"><a href="#port.obi_read_req_a_be_o">obi_read_req_a_be_o</a><span class="type-annotation">: output strb_t</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_read_req_a_wdata_o" class="impl"><code class="in-band"><a href="#port.obi_read_req_a_wdata_o">obi_read_req_a_wdata_o</a><span class="type-annotation">: output data_t</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_read_req_r_ready_o" class="impl"><code class="in-band"><a href="#port.obi_read_req_r_ready_o">obi_read_req_r_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_read_rsp_a_gnt_i" class="impl"><code class="in-band"><a href="#port.obi_read_rsp_a_gnt_i">obi_read_rsp_a_gnt_i</a><span class="type-annotation">: input logic</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_read_rsp_r_valid_i" class="impl"><code class="in-band"><a href="#port.obi_read_rsp_r_valid_i">obi_read_rsp_r_valid_i</a><span class="type-annotation">: input logic</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_read_rsp_r_rdata_i" class="impl"><code class="in-band"><a href="#port.obi_read_rsp_r_rdata_i">obi_read_rsp_r_rdata_i</a><span class="type-annotation">: input data_t</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_read_rsp_r_rid_i" class="impl"><code class="in-band"><a href="#port.obi_read_rsp_r_rid_i">obi_read_rsp_r_rid_i</a><span class="type-annotation">: input id_t</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_read_rsp_r_err_i" class="impl"><code class="in-band"><a href="#port.obi_read_rsp_r_err_i">obi_read_rsp_r_err_i</a><span class="type-annotation">: input logic</span></code></h3><div class="docblock">
+</div><h3 id="port.init_write_req_valid_o" class="impl"><code class="in-band"><a href="#port.init_write_req_valid_o">init_write_req_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.init_write_req_cfg_o" class="impl"><code class="in-band"><a href="#port.init_write_req_cfg_o">init_write_req_cfg_o</a><span class="type-annotation">: output addr_t</span></code></h3><div class="docblock">
+</div><h3 id="port.init_write_req_term_o" class="impl"><code class="in-band"><a href="#port.init_write_req_term_o">init_write_req_term_o</a><span class="type-annotation">: output data_t</span></code></h3><div class="docblock">
+</div><h3 id="port.init_write_req_strb_o" class="impl"><code class="in-band"><a href="#port.init_write_req_strb_o">init_write_req_strb_o</a><span class="type-annotation">: output strb_t</span></code></h3><div class="docblock">
+</div><h3 id="port.init_write_req_id_o" class="impl"><code class="in-band"><a href="#port.init_write_req_id_o">init_write_req_id_o</a><span class="type-annotation">: output id_t</span></code></h3><div class="docblock">
+</div><h3 id="port.init_write_req_ready_i" class="impl"><code class="in-band"><a href="#port.init_write_req_ready_i">init_write_req_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.init_write_rsp_valid_i" class="impl"><code class="in-band"><a href="#port.init_write_rsp_valid_i">init_write_rsp_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.init_write_rsp_ready_o" class="impl"><code class="in-band"><a href="#port.init_write_rsp_ready_o">init_write_rsp_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_write_req_a_req_o" class="impl"><code class="in-band"><a href="#port.obi_write_req_a_req_o">obi_write_req_a_req_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_write_req_a_addr_o" class="impl"><code class="in-band"><a href="#port.obi_write_req_a_addr_o">obi_write_req_a_addr_o</a><span class="type-annotation">: output addr_t</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_write_req_a_we_o" class="impl"><code class="in-band"><a href="#port.obi_write_req_a_we_o">obi_write_req_a_we_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_write_req_a_be_o" class="impl"><code class="in-band"><a href="#port.obi_write_req_a_be_o">obi_write_req_a_be_o</a><span class="type-annotation">: output strb_t</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_write_req_a_wdata_o" class="impl"><code class="in-band"><a href="#port.obi_write_req_a_wdata_o">obi_write_req_a_wdata_o</a><span class="type-annotation">: output data_t</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_write_req_a_aid_o" class="impl"><code class="in-band"><a href="#port.obi_write_req_a_aid_o">obi_write_req_a_aid_o</a><span class="type-annotation">: output id_t</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_write_req_r_ready_o" class="impl"><code class="in-band"><a href="#port.obi_write_req_r_ready_o">obi_write_req_r_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_write_rsp_a_gnt_i" class="impl"><code class="in-band"><a href="#port.obi_write_rsp_a_gnt_i">obi_write_rsp_a_gnt_i</a><span class="type-annotation">: input logic</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_write_rsp_r_valid_i" class="impl"><code class="in-band"><a href="#port.obi_write_rsp_r_valid_i">obi_write_rsp_r_valid_i</a><span class="type-annotation">: input logic</span></code></h3><div class="docblock">
+</div><h3 id="port.obi_write_rsp_r_rdata_i" class="impl"><code class="in-band"><a href="#port.obi_write_rsp_r_rdata_i">obi_write_rsp_r_rdata_i</a><span class="type-annotation">: input data_t</span></code></h3><div class="docblock">
+</div><h3 id="port.idma_busy_o" class="impl"><code class="in-band"><a href="#port.idma_busy_o">idma_busy_o</a><span class="type-annotation">: output idma_pkg::idma_busy_t</span></code></h3><div class="docblock">
+</div><h2 id="types" class="section-header"><a href="#types">Types<a></h2>
+<table>
+<tr><td><a class="type" href="type.axi_aw_chan_t.html">axi_aw_chan_t</a></td><td></td></tr><tr><td><a class="type" href="type.axi_w_chan_t.html">axi_w_chan_t</a></td><td></td></tr><tr><td><a class="type" href="type.axi_b_chan_t.html">axi_b_chan_t</a></td><td></td></tr><tr><td><a class="type" href="type.axi_ar_chan_t.html">axi_ar_chan_t</a></td><td></td></tr><tr><td><a class="type" href="type.axi_r_chan_t.html">axi_r_chan_t</a></td><td></td></tr><tr><td><a class="type" href="type.axi_req_t.html">axi_req_t</a></td><td></td></tr><tr><td><a class="type" href="type.axi_rsp_t.html">axi_rsp_t</a></td><td></td></tr><tr><td><a class="type" href="type.init_req_chan_t.html">init_req_chan_t</a></td><td><p>init read request</p>
+</td></tr><tr><td><a class="type" href="type.init_req_t.html">init_req_t</a></td><td></td></tr><tr><td><a class="type" href="type.init_rsp_chan_t.html">init_rsp_chan_t</a></td><td></td></tr><tr><td><a class="type" href="type.init_rsp_t.html">init_rsp_t</a></td><td></td></tr><tr><td><a class="type" href="type.a_optional_t.html">a_optional_t</a></td><td></td></tr><tr><td><a class="type" href="type.r_optional_t.html">r_optional_t</a></td><td></td></tr><tr><td><a class="type" href="type.obi_a_chan_t.html">obi_a_chan_t</a></td><td></td></tr><tr><td><a class="type" href="type.obi_r_chan_t.html">obi_r_chan_t</a></td><td></td></tr><tr><td><a class="type" href="type.obi_req_t.html">obi_req_t</a></td><td></td></tr><tr><td><a class="type" href="type.obi_rsp_t.html">obi_rsp_t</a></td><td></td></tr><tr><td><a class="type" href="type.options_t.html">options_t</a></td><td><p>Option struct: AXI4 id as well as AXI and backend options</p>
+</td></tr><tr><td><a class="type" href="type.idma_req_t.html">idma_req_t</a></td><td><p>1D iDMA request type:</p>
+</td></tr><tr><td><a class="type" href="type.err_payload_t.html">err_payload_t</a></td><td><p>1D iDMA response payload:</p>
+</td></tr><tr><td><a class="type" href="type.idma_rsp_t.html">idma_rsp_t</a></td><td><p>1D iDMA response type:</p>
+</td></tr><tr><td><a class="type" href="type.axi_read_ar_chan_padded_t.html">axi_read_ar_chan_padded_t</a></td><td></td></tr><tr><td><a class="type" href="type.init_read_req_chan_padded_t.html">init_read_req_chan_padded_t</a></td><td></td></tr><tr><td><a class="type" href="type.obi_read_a_chan_padded_t.html">obi_read_a_chan_padded_t</a></td><td></td></tr><tr><td><a class="type" href="type.read_meta_channel_t.html">read_meta_channel_t</a></td><td></td></tr><tr><td><a class="type" href="type.init_write_req_chan_padded_t.html">init_write_req_chan_padded_t</a></td><td></td></tr><tr><td><a class="type" href="type.obi_write_a_chan_padded_t.html">obi_write_a_chan_padded_t</a></td><td></td></tr><tr><td><a class="type" href="type.write_meta_channel_t.html">write_meta_channel_t</a></td><td></td></tr></table>
+<h2 id="signals" class="section-header"><a href="#signals">Signals</a></h2>
+<h3 id="signal.axi_read_req" class="impl"><code class="in-band"><a href="#signal.axi_read_req">axi_read_req</a><span class="type-annotation">: axi_req_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.axi_read_rsp" class="impl"><code class="in-band"><a href="#signal.axi_read_rsp">axi_read_rsp</a><span class="type-annotation">: axi_rsp_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.init_read_req" class="impl"><code class="in-band"><a href="#signal.init_read_req">init_read_req</a><span class="type-annotation">: init_req_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.init_read_rsp" class="impl"><code class="in-band"><a href="#signal.init_read_rsp">init_read_rsp</a><span class="type-annotation">: init_rsp_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.init_write_req" class="impl"><code class="in-band"><a href="#signal.init_write_req">init_write_req</a><span class="type-annotation">: init_req_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.init_write_rsp" class="impl"><code class="in-band"><a href="#signal.init_write_rsp">init_write_rsp</a><span class="type-annotation">: init_rsp_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.obi_read_req" class="impl"><code class="in-band"><a href="#signal.obi_read_req">obi_read_req</a><span class="type-annotation">: obi_req_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.obi_read_rsp" class="impl"><code class="in-band"><a href="#signal.obi_read_rsp">obi_read_rsp</a><span class="type-annotation">: obi_rsp_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.obi_write_req" class="impl"><code class="in-band"><a href="#signal.obi_write_req">obi_write_req</a><span class="type-annotation">: obi_req_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.obi_write_rsp" class="impl"><code class="in-band"><a href="#signal.obi_write_rsp">obi_write_rsp</a><span class="type-annotation">: obi_rsp_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.idma_req" class="impl"><code class="in-band"><a href="#signal.idma_req">idma_req</a><span class="type-annotation">: idma_req_t</span></code></h3><div class="docblock">
+</div><h3 id="signal.idma_rsp" class="impl"><code class="in-band"><a href="#signal.idma_rsp">idma_rsp</a><span class="type-annotation">: idma_rsp_t</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

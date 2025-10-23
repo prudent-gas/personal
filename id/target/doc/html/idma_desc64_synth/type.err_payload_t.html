@@ -1,0 +1,28 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:34.644985088 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Typedef <a class="type">err_payload_t</a></h1>
+<pre>typedef struct packed {                                              
+        axi_pkg::resp_t      cause;                                      
+        idma_pkg::err_type_t err_type;                                   
+        addr_t           burst_addr;                                 
+    } err_payload_t;</pre>
+<p>1D iDMA response payload:</p>
+<ul>
+<li>
+<p><code>cause</code>: the AXI response</p>
+</li>
+<li>
+<p><code>err_type</code>: type of the error: read, write, internal, …</p>
+</li>
+<li>
+<p><code>burst_addr</code>: the burst address where the issue error occurred</p>
+</li>
+</ul>
+</section>
+</body>
+</html>

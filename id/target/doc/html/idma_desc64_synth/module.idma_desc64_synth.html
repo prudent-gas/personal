@@ -1,0 +1,45 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:34.648476404 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">idma_desc64_synth</a></h1>
+<div class="docblock">
+<p>synth wrapper</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.AddrWidth" class="impl"><code class="in-band"><a href="#parameter.AddrWidth">AddrWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h3 id="parameter.DataWidth" class="impl"><code class="in-band"><a href="#parameter.DataWidth">DataWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h3 id="parameter.AxiIdWidth" class="impl"><code class="in-band"><a href="#parameter.AxiIdWidth">AxiIdWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h3 id="parameter.idma_req_t" class="impl"><code class="in-band"><a href="#parameter.idma_req_t">idma_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.idma_rsp_t" class="impl"><code class="in-band"><a href="#parameter.idma_rsp_t">idma_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.axi_rsp_t" class="impl"><code class="in-band"><a href="#parameter.axi_rsp_t">axi_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.axi_req_t" class="impl"><code class="in-band"><a href="#parameter.axi_req_t">axi_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.axi_ar_chan_t" class="impl"><code class="in-band"><a href="#parameter.axi_ar_chan_t">axi_ar_chan_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.axi_r_chan_t" class="impl"><code class="in-band"><a href="#parameter.axi_r_chan_t">axi_r_chan_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.reg_rsp_t" class="impl"><code class="in-band"><a href="#parameter.reg_rsp_t">reg_rsp_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.reg_req_t" class="impl"><code class="in-band"><a href="#parameter.reg_req_t">reg_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+</div><h3 id="parameter.InputFifoDepth" class="impl"><code class="in-band"><a href="#parameter.InputFifoDepth">InputFifoDepth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h3 id="parameter.PendingFifoDepth" class="impl"><code class="in-band"><a href="#parameter.PendingFifoDepth">PendingFifoDepth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.master_req_o" class="impl"><code class="in-band"><a href="#port.master_req_o">master_req_o</a><span class="type-annotation">: output axi_req_t</span></code></h3><div class="docblock">
+</div><h3 id="port.master_rsp_i" class="impl"><code class="in-band"><a href="#port.master_rsp_i">master_rsp_i</a><span class="type-annotation">: input  axi_rsp_t</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_ar_id_i" class="impl"><code class="in-band"><a href="#port.axi_ar_id_i">axi_ar_id_i</a><span class="type-annotation">: input  logic [AxiIdWidth-1:0]</span></code></h3><div class="docblock">
+</div><h3 id="port.axi_aw_id_i" class="impl"><code class="in-band"><a href="#port.axi_aw_id_i">axi_aw_id_i</a><span class="type-annotation">: input  logic [AxiIdWidth-1:0]</span></code></h3><div class="docblock">
+</div><h3 id="port.slave_req_i" class="impl"><code class="in-band"><a href="#port.slave_req_i">slave_req_i</a><span class="type-annotation">: input  reg_req_t</span></code></h3><div class="docblock">
+</div><h3 id="port.slave_rsp_o" class="impl"><code class="in-band"><a href="#port.slave_rsp_o">slave_rsp_o</a><span class="type-annotation">: output reg_rsp_t</span></code></h3><div class="docblock">
+</div><h3 id="port.idma_req_o" class="impl"><code class="in-band"><a href="#port.idma_req_o">idma_req_o</a><span class="type-annotation">: output idma_req_t</span></code></h3><div class="docblock">
+</div><h3 id="port.idma_req_valid_o" class="impl"><code class="in-band"><a href="#port.idma_req_valid_o">idma_req_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.idma_req_ready_i" class="impl"><code class="in-band"><a href="#port.idma_req_ready_i">idma_req_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.idma_rsp_i" class="impl"><code class="in-band"><a href="#port.idma_rsp_i">idma_rsp_i</a><span class="type-annotation">: input  idma_rsp_t</span></code></h3><div class="docblock">
+</div><h3 id="port.idma_rsp_valid_i" class="impl"><code class="in-band"><a href="#port.idma_rsp_valid_i">idma_rsp_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.idma_rsp_ready_o" class="impl"><code class="in-band"><a href="#port.idma_rsp_ready_o">idma_rsp_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div><h3 id="port.idma_busy_i" class="impl"><code class="in-band"><a href="#port.idma_busy_i">idma_busy_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+</div><h3 id="port.irq_o" class="impl"><code class="in-band"><a href="#port.irq_o">irq_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

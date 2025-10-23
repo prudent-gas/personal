@@ -1,0 +1,24 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:02:30.987485618 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Typedef <a class="type">options_t</a></h1>
+<pre>typedef struct packed {                                              
+        idma_pkg::protocol_e        src_protocol;                        
+        idma_pkg::protocol_e        dst_protocol;                        
+        id_t                    axi_id;                              
+        idma_pkg::axi_options_t     src;                                 
+        idma_pkg::axi_options_t     dst;                                 
+        idma_pkg::backend_options_t beo;                                 
+        logic                       last;                                
+    } options_t;</pre>
+<p>Option struct: AXI4 id as well as AXI and backend options</p>
+<ul>
+<li><code>last</code>: a flag can be set if this transfer is the last of a set of transfers</li>
+</ul>
+</section>
+</body>
+</html>

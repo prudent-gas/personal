@@ -1,0 +1,63 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:03:34.647793666 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Module <a class="module">idma_desc64_reader</a></h1>
+<div class="docblock">
+<p>This module takes in an AXI R-channel, and reads descriptors from it.</p>
+<p>Note that an using an address width other than 64 bits will need</p>
+<p>modifications.</p>
+</div>
+<h2 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h2>
+<h3 id="parameter.AddrWidth" class="impl"><code class="in-band"><a href="#parameter.AddrWidth">AddrWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Address width of the AXI bus</p>
+</div><h3 id="parameter.DataWidth" class="impl"><code class="in-band"><a href="#parameter.DataWidth">DataWidth</a><span class="type-annotation">: int unsigned</span></code></h3><div class="docblock">
+<p>Data width of the AXI bus</p>
+</div><h3 id="parameter.idma_req_t" class="impl"><code class="in-band"><a href="#parameter.idma_req_t">idma_req_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>iDMA request type</p>
+</div><h3 id="parameter.axi_r_chan_t" class="impl"><code class="in-band"><a href="#parameter.axi_r_chan_t">axi_r_chan_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>AXI R channel type</p>
+</div><h3 id="parameter.descriptor_t" class="impl"><code class="in-band"><a href="#parameter.descriptor_t">descriptor_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>Configuration descriptor type</p>
+</div><h3 id="parameter.addr_t" class="impl"><code class="in-band"><a href="#parameter.addr_t">addr_t</a><span class="type-annotation">: type</span></code></h3><div class="docblock">
+<p>AXI bus address type, derived from the address width</p>
+</div><h2 id="ports" class="section-header"><a href="#ports">Ports</a></h2>
+<h3 id="port.clk_i" class="impl"><code class="in-band"><a href="#port.clk_i">clk_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>clock</p>
+</div><h3 id="port.rst_ni" class="impl"><code class="in-band"><a href="#port.rst_ni">rst_ni</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>reset</p>
+</div><h3 id="port.r_chan_i" class="impl"><code class="in-band"><a href="#port.r_chan_i">r_chan_i</a><span class="type-annotation">: input  axi_r_chan_t</span></code></h3><div class="docblock">
+<p>axi read channel</p>
+</div><h3 id="port.r_chan_valid_i" class="impl"><code class="in-band"><a href="#port.r_chan_valid_i">r_chan_valid_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>read channel valid</p>
+</div><h3 id="port.r_chan_ready_o" class="impl"><code class="in-band"><a href="#port.r_chan_ready_o">r_chan_ready_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>read channel ready</p>
+</div><h3 id="port.idma_req_o" class="impl"><code class="in-band"><a href="#port.idma_req_o">idma_req_o</a><span class="type-annotation">: output idma_req_t</span></code></h3><div class="docblock">
+<p>idma request</p>
+</div><h3 id="port.idma_req_valid_o" class="impl"><code class="in-band"><a href="#port.idma_req_valid_o">idma_req_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>idma request valid</p>
+</div><h3 id="port.idma_req_ready_i" class="impl"><code class="in-band"><a href="#port.idma_req_ready_i">idma_req_ready_i</a><span class="type-annotation">: input  logic</span></code></h3><div class="docblock">
+<p>idma request ready</p>
+<p>NOTE: we assume that if a read was launched,</p>
+<p>the connected fifo has still space left, i.e. this signal is always</p>
+<p>1 if a request is in-flight. If a request is in-flight and there</p>
+<p>is not enough space in the fifo, we will either stall the bus or</p>
+<p>drop the request.</p>
+</div><h3 id="port.next_descriptor_addr_o" class="impl"><code class="in-band"><a href="#port.next_descriptor_addr_o">next_descriptor_addr_o</a><span class="type-annotation">: output addr_t</span></code></h3><div class="docblock">
+<p>location of the next descriptor address</p>
+</div><h3 id="port.next_descriptor_addr_valid_o" class="impl"><code class="in-band"><a href="#port.next_descriptor_addr_valid_o">next_descriptor_addr_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>whether next_descriptor_addr is valid</p>
+</div><h3 id="port.do_irq_o" class="impl"><code class="in-band"><a href="#port.do_irq_o">do_irq_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>whether this descriptor needs an IRQ raised</p>
+</div><h3 id="port.do_irq_valid_o" class="impl"><code class="in-band"><a href="#port.do_irq_valid_o">do_irq_valid_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>whether do_irq_o is valid</p>
+</div><h3 id="port.idma_req_inflight_o" class="impl"><code class="in-band"><a href="#port.idma_req_inflight_o">idma_req_inflight_o</a><span class="type-annotation">: output logic</span></code></h3><div class="docblock">
+<p>whether a request is in-flight</p>
+</div><h2 id="signals" class="section-header"><a href="#signals">Signals</a></h2>
+<h3 id="signal.current_descriptor" class="impl"><code class="in-band"><a href="#signal.current_descriptor">current_descriptor</a><span class="type-annotation">: descriptor_t</span></code></h3><div class="docblock">
+</div></section>
+</body>
+</html>

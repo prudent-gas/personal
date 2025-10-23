@@ -1,0 +1,30 @@
+<!-- Compiled by morty-0.9.0 / 2025-10-23 18:02:45.576670761 -05:00:00 -->
+
+<html>
+<link rel="stylesheet" type="text/css" href="static/rustdoc.css">
+<link rel="stylesheet" type="text/css" href="static/light.css">
+<link rel="stylesheet" type="text/css" href="static/svdoc.css">
+<body>
+<section id="main" class="content"><h1 class="fqn">Typedef <a class="type">idma_req_t</a></h1>
+<pre>typedef struct packed {                                              
+        tf_len_t   length;                                               
+        addr_t src_addr;                                             
+        addr_t dst_addr;                                             
+        logic     user;                                                 
+        options_t  opt;                                                  
+    } idma_req_t;</pre>
+<p>1D iDMA request type:</p>
+<ul>
+<li>
+<p><code>length</code>: the length of the transfer in bytes</p>
+</li>
+<li>
+<p><code>*_addr</code>: the source / target byte addresses of the transfer</p>
+</li>
+<li>
+<p><code>opt</code>: the options field</p>
+</li>
+</ul>
+</section>
+</body>
+</html>
